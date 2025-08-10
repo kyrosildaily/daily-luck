@@ -69,13 +69,21 @@ label { display: block; text-align: left; font-weight: bold; margin-bottom: 5px;
 .dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 15px;}
 .welcome-text { margin: 0; font-size: 24px; }
 #logout-button { width: auto; padding: 8px 16px; font-size: 14px; margin-top: 0; background-color: #fa3e3e; }
-.dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr; gap: 20px; grid-template-areas: "spins timer" "spinner spinner" }
+.dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr auto; gap: 20px; grid-template-areas: "spins timer" "spinner spinner" "extra-spins winnings"; }
 .grid-item { background-color: #f9f9f9; padding: 20px; border-radius: 8px; }
 .stats-spins { grid-area: spins; }
 .stats-timer { grid-area: timer; }
 .spinner-area { grid-area: spinner; background-color: transparent; padding: 0; }
+.extra-spins { grid-area: extra-spins; }
+.winnings-history { grid-area: winnings; }
 .grid-item h3 { margin-top: 0; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
 .stats-spins p, .stats-timer p { font-size: 32px; font-weight: 700; color: var(--primary-color); text-align: center; margin: 10px 0 0; }
+#winnings-list { list-style: none; padding: 0; margin: 0; max-height: 150px; overflow-y: auto; }
+#winnings-list li { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee; }
+#winnings-list li .date { font-size: 12px; color: var(--light-text); }
+.task-list { list-style: none; padding: 0; }
+.task-list li { margin-bottom: 10px; color: var(--light-text); }
+.task-icon { margin-right: 8px; }
 
 #reward-section { width: 100%; display: flex; flex-direction: column; align-items: center; }
 .spinner-container { width: 100%; height: 120px; background-color: #e9ecef; border: 3px solid #dee2e6; border-radius: 10px; overflow: hidden; position: relative; margin-bottom: 20px; }
@@ -95,7 +103,7 @@ label { display: block; text-align: left; font-weight: bold; margin-bottom: 5px;
     .info-column, .auth-column { flex-basis: auto; }
     .auth-column { border-top: 1px solid var(--border-color); }
     .main-headline { font-size: 28px; }
-    .dashboard-grid { grid-template-columns: 1fr; grid-template-areas: "spins" "timer" "spinner" }
+    .dashboard-grid { grid-template-columns: 1fr; grid-template-areas: "spins" "timer" "spinner" "extra-spins" "winnings"; }
 }
 @media (max-width: 480px) {
     body { padding: 0; }
