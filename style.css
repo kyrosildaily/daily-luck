@@ -126,7 +126,7 @@ body {
     margin-top: 20px;
 }
 
-/* AUTH (ÜYELİK) SÜTUNU STİLLERİ - Mevcut stillerle uyumlu */
+/* AUTH (ÜYELİK) SÜTUNU STİLLERİ */
 #auth-container {
     width: 100%;
     max-width: 400px;
@@ -160,21 +160,98 @@ label { display: block; text-align: left; font-weight: bold; margin-bottom: 5px;
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background-color: transparent; /* KOYU KAPLAMA KALDIRILDI */
+    background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 100;
-    pointer-events: none; /* JS ile kontrol edilecek */
 }
+#app-container.hidden {
+    pointer-events: none;
+}
+
 #app-container > div {
-    background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); text-align: center; width: 90%; max-width: 450px;
-    pointer-events: auto; /* İçeriğin tıklanabilir olmasını sağlar */
+    background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); text-align: center; width: 90%; max-width: 550px;
 }
 #logout-button { background-color: #fa3e3e; margin-top: 20px; }
 #logout-button:hover { background-color: #e03838; }
-#message-area { margin-top: 1rem; padding: 1rem; border-radius: 6px; font-weight: bold; color: white; }
+#message-area { margin-top: 1rem; padding: 1rem; border-radius: 6px; font-weight: bold; color: white; min-height: 24px;}
 #verification-message { padding: 1rem; background-color: #fff3cd; border: 1px solid #ffeeba; color: #856404; border-radius: 6px; }
+
+
+/* YENİ EKLENEN ANİMASYON STİLLERİ */
+#reward-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.spinner-container {
+    width: 100%;
+    max-width: 500px;
+    height: 120px;
+    background-color: #e9ecef;
+    border: 3px solid #dee2e6;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.spinner-marker {
+    position: absolute;
+    width: 4px;
+    height: 100%;
+    background-color: #e63946;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(230, 57, 70, 0.7);
+}
+
+.spinner-reel {
+    height: 100%;
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: transform 5s cubic-bezier(0.2, 0.8, 0.25, 1);
+}
+
+.spinner-item {
+    width: 110px;
+    height: 110px;
+    flex-shrink: 0;
+    margin: 5px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #fff;
+    border: 2px solid transparent;
+}
+
+.spinner-item img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.spinner-item p {
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0 5px;
+}
+
+.rarity-common { border-color: #adb5bd; }
+.rarity-uncommon { border-color: #495057; }
+.rarity-rare { border-color: #0077b6; }
+.rarity-legendary { border-color: #ffb703; }
+
 
 /* MOBİL UYUMLULUK (RESPONSIVE) */
 @media (max-width: 992px) {
