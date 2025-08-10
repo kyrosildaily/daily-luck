@@ -285,14 +285,7 @@ logoutButton.addEventListener('click', () => {
     auth.signOut().then(() => window.location.reload());
 });
 
-// YARDIMCI FONKSİYON: Belirtilen ID hariç rastgele bir ödül getirir.
-const getRandomReward = (excludeId) => {
-    const filteredRewards = rewards.filter(r => r.id !== excludeId);
-    return filteredRewards[Math.floor(Math.random() * filteredRewards.length)];
-};
-
-
-// Ödül Alma Butonu (SON GÜNCELLEME: KOMŞU KONTROLÜ)
+// Ödül Alma Butonu (FİNAL VERSİYON - ÖLÇÜME DAYALI)
 claimButton.addEventListener('click', async () => {
     const user = auth.currentUser;
     if (!user || !user.emailVerified) return;
@@ -318,6 +311,7 @@ claimButton.addEventListener('click', async () => {
         }
     }
 
+    // 1. KESİN KAZANANI SEÇ
     const weightedPool = [];
     rewards.forEach(reward => {
         const weight = reward.chance * 10;
@@ -327,28 +321,21 @@ claimButton.addEventListener('click', async () => {
     });
     const winner = weightedPool[Math.floor(Math.random() * weightedPool.length)];
 
+    // 2. GÖRSEL ANİMASYON İÇİN MAKARA HAZIRLA
     const reel = document.querySelector('.spinner-reel');
     reel.style.transition = 'none';
     reel.style.transform = 'translateX(0)';
     reel.innerHTML = '';
 
-    let reelItems = [];
-    const reelLength = 50;
+    const reelLength = 50; 
     const winningIndex = reelLength - 5; 
+    let reelItems = [];
     
     for(let i = 0; i < reelLength; i++) {
         reelItems.push(rewards[Math.floor(Math.random() * rewards.length)]);
     }
 
     reelItems[winningIndex] = winner;
-
-    // YENİ EKLENEN KONTROL: Kazananın komşuları aynıysa değiştir.
-    if (winningIndex > 0 && reelItems[winningIndex - 1].id === winner.id) {
-        reelItems[winningIndex - 1] = getRandomReward(winner.id);
-    }
-    if (winningIndex < reelLength - 1 && reelItems[winningIndex + 1].id === winner.id) {
-        reelItems[winningIndex + 1] = getRandomReward(winner.id);
-    }
     
     reelItems.forEach(item => {
         const div = document.createElement('div');
@@ -358,17 +345,21 @@ claimButton.addEventListener('click', async () => {
         reel.appendChild(div);
     });
 
+    // 3. ANİMASYONU BAŞLAT (Tarayıcının makarayı çizmesi için küçük bir gecikme)
     setTimeout(() => {
-        reel.style.transition = 'transform 5s cubic-bezier(0.25, 0.1, 0.25, 1)';
-        const itemWidth = 120;
-        const containerWidth = reel.parentElement.offsetWidth;
-        const targetPosition = winningIndex * itemWidth;
-        const centeringOffset = (containerWidth / 2) - (itemWidth / 2);
-        const finalPosition = -(targetPosition - centeringOffset);
+        const winningElement = reel.children[winningIndex];
+        const container = reel.parentElement;
 
+        const containerCenter = container.offsetWidth / 2;
+        const elementCenter = winningElement.offsetLeft + (winningElement.offsetWidth / 2);
+        
+        const finalPosition = containerCenter - elementCenter;
+
+        reel.style.transition = 'transform 5s cubic-bezier(0.1, 0, 0.2, 1)';
         reel.style.transform = `translateX(${finalPosition}px)`;
     }, 100);
 
+    // 4. SONUCU GÖSTER VE KAYDET
     setTimeout(async () => {
         const winnerName = winner[`name_${currentLang}`];
         if(winner.id === 'try-again') {
@@ -387,5 +378,5 @@ claimButton.addEventListener('click', async () => {
             lastReward: winner.name_en
         }, { merge: true });
 
-    }, 5500);
+    }, 5500); // Animasyonun bitmesini bekle
 });
