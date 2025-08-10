@@ -37,6 +37,7 @@ const mainContainer = document.querySelector('.main-container');
 const appContainer = document.getElementById('app-container');
 const verificationMessage = document.getElementById('verification-message');
 const mainApp = document.getElementById('main-app');
+const onboardingModal = document.getElementById('onboarding-modal');
 const loginForm = document.getElementById('login-form');
 const signupForm = document.getElementById('signup-form');
 const showSignup = document.getElementById('show-signup');
@@ -46,10 +47,7 @@ const loginButton = document.getElementById('login-button');
 const googleLoginButton = document.getElementById('google-login-button');
 const logoutButton = document.getElementById('logout-button');
 const claimButton = document.getElementById('claim-button');
-const messageArea = document.getElementById('message-area');
-const userDisplayName = document.getElementById('user-display-name');
-const userEmailDisplay = document.getElementById('user-email');
-const verifEmail = document.getElementById('verif-email');
+const onboardingSubmitButton = document.getElementById('onboarding-submit');
 const langEnButton = document.getElementById('lang-en');
 const langTrButton = document.getElementById('lang-tr');
 
@@ -95,31 +93,40 @@ auth.onAuthStateChanged(async (user) => {
     if (user) {
         mainContainer.classList.add('hidden');
         appContainer.classList.remove('hidden');
+        const userRef = db.collection('users').doc(user.uid);
+        const doc = await userRef.get();
+        if (!doc.exists) return;
+        const userData = doc.data();
+        const now = new Date();
+        const lastLogin = userData.lastLogin ? userData.lastLogin.toDate() : new Date(0);
+        if (now.setHours(0,0,0,0) > lastLogin.setHours(0,0,0,0)) {
+            userData.dailySpins = 1;
+            await userRef.update({ dailySpins: 1, lastLogin: now });
+        }
         
-        if (user.emailVerified) {
-            verificationMessage.classList.add('hidden');
-            mainApp.classList.remove('hidden');
-            const userRef = db.collection('users').doc(user.uid);
-            userRef.get().then(doc => {
-                const userData = doc.data();
-                if (doc.exists && userData) {
-                    userDisplayName.textContent = userData.name || user.email;
-                    document.getElementById('spin-count').textContent = userData.dailySpins || 0;
-                    claimButton.disabled = (userData.dailySpins || 0) < 1;
-                    if(claimButton.disabled) { claimButton.textContent = translations[currentLang].comeBackTomorrow; }
-                    if (userData.lastClaim) {
-                        updateCountdown(userData.lastClaim.toDate().getTime());
-                    } else {
-                        document.getElementById('countdown-timer').textContent = '00:00:00';
-                    }
-                    displayWinnings(user.uid);
-                }
-            });
-            userEmailDisplay.textContent = `E-posta: ${user.email}`;
-        } else {
-            verificationMessage.classList.remove('hidden');
+        if (!user.emailVerified) {
             mainApp.classList.add('hidden');
-            verifEmail.textContent = user.email;
+            onboardingModal.classList.add('hidden');
+            verificationMessage.classList.remove('hidden');
+            verificationMessage.innerHTML = `<p>${translations[currentLang].verifDesc1}<strong>${user.email}</strong>${translations[currentLang].verifDesc2}</p>`;
+        } else if (userData.profileComplete === false) {
+            mainApp.classList.add('hidden');
+            verificationMessage.classList.add('hidden');
+            onboardingModal.classList.remove('hidden');
+            document.getElementById('onboarding-name').value = userData.name || '';
+            document.getElementById('onboarding-surname').value = userData.surname || '';
+        } else {
+            mainApp.classList.remove('hidden');
+            verificationMessage.classList.add('hidden');
+            onboardingModal.classList.add('hidden');
+            document.getElementById('user-display-name').textContent = userData.name;
+            document.getElementById('user-email').textContent = user.email;
+            document.getElementById('spin-count').textContent = userData.dailySpins || 0;
+            claimButton.disabled = (userData.dailySpins || 0) < 1;
+            if(claimButton.disabled) { claimButton.textContent = translations[currentLang].comeBackTomorrow; }
+            if (userData.lastClaim) { updateCountdown(userData.lastClaim.toDate().getTime()); }
+            else { document.getElementById('countdown-timer').textContent = '00:00:00'; }
+            displayWinnings(user.uid);
         }
     } else {
         mainContainer.classList.remove('hidden');
@@ -133,6 +140,14 @@ langTrButton.addEventListener('click', () => setLanguage('tr'));
 showSignup.addEventListener('click', (e) => { e.preventDefault(); loginForm.classList.add('hidden'); signupForm.classList.remove('hidden'); });
 showLogin.addEventListener('click', (e) => { e.preventDefault(); signupForm.classList.add('hidden'); loginForm.classList.remove('hidden'); });
 
+onboardingSubmitButton.addEventListener('click', async () => {
+    const user = auth.currentUser; if (!user) return;
+    const name = document.getElementById('onboarding-name').value, surname = document.getElementById('onboarding-surname').value, platform = document.getElementById('onboarding-platform').value, platformUsername = document.getElementById('onboarding-platform-username').value;
+    if (!name || !surname || !platform || !platformUsername) { return alert("Please fill all fields"); }
+    await db.collection('users').doc(user.uid).update({ name, surname, followedPlatform: platform, platformUsername, profileComplete: true });
+    window.location.reload();
+});
+
 signupButton.addEventListener('click', () => {
     const name = document.getElementById('signup-name').value, surname = document.getElementById('signup-surname').value, email = document.getElementById('signup-email').value, password = document.getElementById('signup-password').value, platform = document.getElementById('signup-platform').value, platformUsername = document.getElementById('signup-platform-username').value;
     if (!name || !surname || !email || !password || !platform || !platformUsername) return alert("Please fill in all fields.");
@@ -140,10 +155,7 @@ signupButton.addEventListener('click', () => {
         .then(userCredential => {
             const user = userCredential.user;
             user.sendEmailVerification();
-            return db.collection('users').doc(user.uid).set({
-                name, surname, email, followedPlatform: platform, platformUsername,
-                createdAt: firebase.firestore.FieldValue.serverTimestamp(), dailySpins: 1
-            });
+            return db.collection('users').doc(user.uid).set({ name, surname, email, followedPlatform: platform, platformUsername, createdAt: firebase.firestore.FieldValue.serverTimestamp(), profileComplete: true, dailySpins: 1, lastLogin: new Date() });
         })
         .then(() => alert("Great! Your account has been created. Please check your email to verify your account."))
         .catch(error => alert("Error: " + error.message));
@@ -152,11 +164,7 @@ signupButton.addEventListener('click', () => {
 loginButton.addEventListener('click', () => {
     const email = document.getElementById('login-email').value, password = document.getElementById('login-password').value;
     if (!email || !password) return alert("Please enter email and password.");
-    auth.signInWithEmailAndPassword(email, password)
-        .then(userCredential => {
-            return db.collection('users').doc(userCredential.user.uid).update({ lastLogin: new Date() });
-        })
-        .catch(error => alert("Error: " + error.message));
+    auth.signInWithEmailAndPassword(email, password).catch(error => alert("Error: ".concat(error.message)));
 });
 
 googleLoginButton.addEventListener('click', () => {
@@ -167,7 +175,7 @@ googleLoginButton.addEventListener('click', () => {
             return userRef.get().then(doc => {
                 if (!doc.exists) {
                     userRef.set({
-                        name: user.displayName.split(' ')[0], surname: user.displayName.split(' ').slice(1).join(' '), email: user.email, createdAt: firebase.firestore.FieldValue.serverTimestamp(), dailySpins: 1
+                        name: user.displayName.split(' ')[0], surname: user.displayName.split(' ').slice(1).join(' '), email: user.email, createdAt: firebase.firestore.FieldValue.serverTimestamp(), profileComplete: false, dailySpins: 1, lastLogin: new Date()
                     });
                 } else {
                     userRef.update({ lastLogin: new Date() });
@@ -184,13 +192,13 @@ claimButton.addEventListener('click', async () => {
     const userRef = db.collection('users').doc(user.uid);
     const doc = await userRef.get();
     if (!doc.exists || (doc.data().dailySpins || 0) < 1) return;
-    
+
     claimButton.disabled = true; claimButton.textContent = translations[currentLang].spinningButton;
-    messageArea.textContent = ''; messageArea.style.backgroundColor = 'transparent';
+    document.getElementById('message-area').innerHTML = '';
+    
     const weightedPool = [];
     rewards.forEach(reward => { const weight = reward.chance * 10; for (let i = 0; i < weight; i++) weightedPool.push(reward); });
     const winner = weightedPool[Math.floor(Math.random() * weightedPool.length)];
-    
     const reel = document.querySelector('.spinner-reel');
     reel.style.transition = 'none'; reel.style.transform = 'translateX(0)'; reel.innerHTML = '';
     const reelLength = 50, winningIndex = reelLength - 5;
@@ -204,6 +212,7 @@ claimButton.addEventListener('click', async () => {
         div.innerHTML = `<img src="${item.imageUrl}" alt="${item[`name_${currentLang}`]}"><p>${item[`name_${currentLang}`]}</p>`;
         reel.appendChild(div);
     });
+
     setTimeout(() => {
         const winningElement = reel.children[winningIndex];
         const finalPosition = (reel.parentElement.offsetWidth / 2) - (winningElement.offsetLeft + (winningElement.offsetWidth / 2));
@@ -213,26 +222,27 @@ claimButton.addEventListener('click', async () => {
 
     setTimeout(async () => {
         const winnerName = winner[`name_${currentLang}`];
-        if(winner.id !== 'try-again') {
-            await db.collection('users').doc(user.uid).collection('winnings').add({
-                rewardName: winner.name_en, // Always store in English for consistency
-                timestamp: firebase.firestore.FieldValue.serverTimestamp()
-            });
-            displayWinnings(user.uid);
-        }
+        let message = '';
         
+        // HER ZAMAN GEÇMİŞE KAYDET
+        await db.collection('users').doc(user.uid).collection('winnings').add({
+            rewardName: winner.name_en, // Tutarlılık için İngilizce kaydet
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        displayWinnings(user.uid);
+
         if(winner.id === 'try-again') {
-            messageArea.textContent = winnerName; messageArea.style.backgroundColor = '#ffc700';
+            message = winnerName; document.getElementById('message-area').style.backgroundColor = '#ffc700';
         } else {
-            messageArea.innerHTML = `${translations[currentLang].congratsMessage}${winnerName}${translations[currentLang].winnerContactMessage}`;
-            messageArea.style.backgroundColor = winner.rarity === 'legendary' ? 'var(--legendary-color)' : 'var(--rare-color)';
+            message = `${translations[currentLang].congratsMessage}${winnerName}${translations[currentLang].winnerContactMessage}`;
+            document.getElementById('message-area').style.backgroundColor = winner.rarity === 'legendary' ? 'var(--legendary-color)' : 'var(--rare-color)';
         }
+        document.getElementById('message-area').innerHTML = message;
         
         const now = new Date();
         const currentSpins = doc.data().dailySpins || 0;
         await userRef.update({
-            dailySpins: firebase.firestore.FieldValue.increment(-1),
-            lastClaim: now
+            dailySpins: firebase.firestore.FieldValue.increment(-1), lastClaim: now
         });
         document.getElementById('spin-count').textContent = currentSpins - 1;
         if (currentSpins - 1 > 0) {
