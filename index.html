@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kyrosil Daily - A New Chance Every Day!</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎁</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -85,7 +86,7 @@
                 <button id="logout-button" data-key="logoutButton"></button>
             </div>
             <div class="dashboard-grid">
-                <div class="grid-item stats-spins"><h3 data-key="spinsRemaining"></h3><p id="spin-count">1</p></div>
+                <div class="grid-item stats-spins"><h3 data-key="spinsRemaining"></h3><p id="spin-count">0</p></div>
                 <div class="grid-item stats-timer"><h3 data-key="nextSpinIn"></h3><p id="countdown-timer">--:--:--</p></div>
                 <div class="grid-item spinner-area">
                     <div id="reward-section">
@@ -95,27 +96,35 @@
                     </div>
                 </div>
                 <div class="grid-item extra-spins">
-                    <h3 data-key="extraSpinsTitle"></h3>
-                    <p data-key="extraSpinsDesc"></p>
-                    <ul class="task-list">
-                        <li><span class="task-icon">📷</span> <span data-key="taskFollowInstagram"></span></li>
-                        <li><span class="task-icon">✖️</span> <span data-key="taskFollowX"></span></li>
-                        <li><span class="task-icon">🌐</span> <span data-key="taskVisitWebsite"></span></li>
-                    </ul>
+                    <h3 data-key="extraSpinsTitle"></h3><p data-key="extraSpinsDesc"></p>
+                    <div class="task-list">
+                        <a href="https://instagram.com/kyrosil" target="_blank" class="task-item"><span class="task-icon">📷</span> <span data-key="taskFollowInstagram"></span></a>
+                        <a href="https://x.com/kyrosil" target="_blank" class="task-item"><span class="task-icon">✖️</span> <span data-key="taskFollowX"></span></a>
+                        <a href="https://kyrosil.eu" target="_blank" class="task-item"><span class="task-icon">🌐</span> <span data-key="taskVisitWebsite"></span></a>
+                    </div>
                 </div>
-                <div class="grid-item winnings-history">
-                    <h3 data-key="winningsHistoryTitle"></h3>
-                    <ul id="winnings-list">
-                        </ul>
-                </div>
+                <div class="grid-item winnings-history"><h3 data-key="winningsHistoryTitle"></h3><ul id="winnings-list"></ul></div>
             </div>
         </div>
         <div id="verification-message" class="hidden"></div>
+    </div>
+    
+    <div id="onboarding-modal" class="hidden">
+        <div class="modal-content">
+            <h2 data-key="completeProfileTitle"></h2><p data-key="completeProfileDesc"></p>
+            <input type="text" id="onboarding-name" data-placeholder-key="namePlaceholder" required>
+            <input type="text" id="onboarding-surname" data-placeholder-key="surnamePlaceholder" required>
+            <label for="onboarding-platform" data-key="platformLabel"></label>
+            <select id="onboarding-platform" required></select>
+            <input type="text" id="onboarding-platform-username" data-placeholder-key="platformUsernamePlaceholder" required>
+            <button id="onboarding-submit" data-key="saveProfileButton"></button>
+        </div>
     </div>
     
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="main.js"></script>
+
 </body>
 </html>
