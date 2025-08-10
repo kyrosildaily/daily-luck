@@ -160,14 +160,16 @@ label { display: block; text-align: left; font-weight: bold; margin-bottom: 5px;
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: transparent; /* KOYU KAPLAMA KALDIRILDI */
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 100;
+    pointer-events: none; /* JS ile kontrol edilecek */
 }
 #app-container > div {
     background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); text-align: center; width: 90%; max-width: 450px;
+    pointer-events: auto; /* İçeriğin tıklanabilir olmasını sağlar */
 }
 #logout-button { background-color: #fa3e3e; margin-top: 20px; }
 #logout-button:hover { background-color: #e03838; }
