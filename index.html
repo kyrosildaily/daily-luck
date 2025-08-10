@@ -83,7 +83,10 @@
         <div id="main-app" class="hidden">
             <div class="dashboard-header">
                 <h1 class="welcome-text"><span data-key="welcomeMessage"></span>, <span id="user-display-name"></span>!</h1>
-                <button id="logout-button" data-key="logoutButton"></button>
+                <div>
+                    <button id="edit-profile-button" class="secondary-button" data-key="editProfileButton"></button>
+                    <button id="logout-button" data-key="logoutButton"></button>
+                </div>
             </div>
             <div class="dashboard-grid">
                 <div class="grid-item stats-spins"><h3 data-key="spinsRemaining"></h3><p id="spin-count">0</p></div>
@@ -101,6 +104,7 @@
                         <a href="https://instagram.com/kyrosil" target="_blank" class="task-item"><span class="task-icon">📷</span> <span data-key="taskFollowInstagram"></span></a>
                         <a href="https://x.com/kyrosil" target="_blank" class="task-item"><span class="task-icon">✖️</span> <span data-key="taskFollowX"></span></a>
                         <a href="https://kyrosil.eu" target="_blank" class="task-item"><span class="task-icon">🌐</span> <span data-key="taskVisitWebsite"></span></a>
+                        <a href="#" class="task-item"><span class="task-icon">🇪🇺</span> <span data-key="taskEuPortal"></span></a>
                     </div>
                 </div>
                 <div class="grid-item winnings-history"><h3 data-key="winningsHistoryTitle"></h3><ul id="winnings-list"></ul></div>
@@ -118,6 +122,21 @@
             <select id="onboarding-platform" required></select>
             <input type="text" id="onboarding-platform-username" data-placeholder-key="platformUsernamePlaceholder" required>
             <button id="onboarding-submit" data-key="saveProfileButton"></button>
+        </div>
+    </div>
+    
+    <div id="edit-profile-modal" class="hidden">
+        <div class="modal-content">
+            <h2 data-key="editProfileTitle"></h2>
+            <label for="edit-name" data-key="nameLabel"></label>
+            <input type="text" id="edit-name" data-placeholder-key="namePlaceholder" required>
+            <label for="edit-surname" data-key="surnameLabel"></label>
+            <input type="text" id="edit-surname" data-placeholder-key="surnamePlaceholder" required>
+            <label for="edit-platform" data-key="platformLabel"></label>
+            <select id="edit-platform" required></select>
+            <input type="text" id="edit-platform-username" data-placeholder-key="platformUsernamePlaceholder" required>
+            <button id="edit-profile-submit" data-key="saveChangesButton"></button>
+            <button id="edit-profile-cancel" class="cancel-button" data-key="cancelButton"></button>
         </div>
     </div>
     
