@@ -28,6 +28,8 @@ const rewards = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    // --- TÜM ELEMENTLERİ SEÇ ---
     const mainContainer = document.querySelector('.main-container');
     const appContainer = document.getElementById('app-container');
     const verificationMessage = document.getElementById('verification-message');
@@ -46,6 +48,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const langEnButton = document.getElementById('lang-en');
     const langTrButton = document.getElementById('lang-tr');
 
+    // --- GÖRÜNÜM YÖNETİCİSİ ---
+    const showView = (viewName) => {
+        mainContainer.classList.add('hidden');
+        appContainer.classList.add('hidden');
+        mainApp.classList.add('hidden');
+        verificationMessage.classList.add('hidden');
+        onboardingModal.classList.add('hidden');
+
+        if (viewName === 'login') {
+            mainContainer.classList.remove('hidden');
+        } else if (viewName === 'app') {
+            appContainer.classList.remove('hidden');
+            mainApp.classList.remove('hidden');
+        } else if (viewName === 'verify') {
+            appContainer.classList.remove('hidden');
+            verificationMessage.classList.remove('hidden');
+        } else if (viewName === 'onboarding') {
+            appContainer.classList.add('hidden'); // Onboarding kendi modal yapısını kullanır
+            onboardingModal.classList.remove('hidden');
+        }
+    };
+    
+    // --- DİL FONKSİYONU ---
     const setLanguage = (lang) => {
         currentLang = lang; localStorage.setItem('lang', lang); document.documentElement.lang = lang;
         document.querySelectorAll('[data-key]').forEach(elem => { if(elem) elem.innerHTML = translations[lang][elem.getAttribute('data-key')] || ''; });
@@ -56,10 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
         langTrButton.classList.toggle('active', lang === 'tr');
     };
 
+    // --- DASHBOARD GÜNCELLEME FONKSİYONLARI ---
     const updateCountdown = (claimTimestamp) => {
         if (countdownInterval) clearInterval(countdownInterval);
         const countdownEl = document.getElementById('countdown-timer');
-        if (!countdownEl) return;
         const nextClaimTime = claimTimestamp + (24 * 60 * 60 * 1000);
         countdownInterval = setInterval(() => {
             const distance = nextClaimTime - new Date().getTime();
@@ -75,11 +100,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const displayWinnings = async (userId) => {
         const listEl = document.getElementById('winnings-list');
-        if (!listEl) return;
-        listEl.innerHTML = `<li>${translations[currentLang].noWinnings}</li>`; // Default message
+        listEl.innerHTML = `<li>${translations[currentLang].noWinnings}</li>`;
         const querySnapshot = await db.collection('users').doc(userId).collection('winnings').orderBy('timestamp', 'desc').limit(5).get();
         if (!querySnapshot.empty) {
-            listEl.innerHTML = ''; // Clear default message
+            listEl.innerHTML = '';
             querySnapshot.forEach(doc => {
                 const data = doc.data();
                 const date = data.timestamp.toDate();
@@ -88,41 +112,41 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     };
-
+    
+    // --- ANA GİRİŞ KONTROLÜ ---
     auth.onAuthStateChanged(async (user) => {
         if (user) {
-            mainContainer.classList.add('hidden');
-            appContainer.classList.remove('hidden');
             const userRef = db.collection('users').doc(user.uid);
-            const doc = await userRef.get();
+            let doc = await userRef.get();
+            
+            // Kullanıcı dökümanı yoksa oluştur (bu normalde signup/google ile olur, güvenlik için)
             if (!doc.exists) {
-                console.error("User document not found in Firestore!");
-                return;
+                await userRef.set({
+                    email: user.email, name: user.displayName || 'New User', createdAt: firebase.firestore.FieldValue.serverTimestamp(), profileComplete: false, dailySpins: 1, lastLogin: new Date()
+                });
+                doc = await userRef.get();
             }
+
             const userData = doc.data();
             const now = new Date();
             const lastLogin = userData.lastLogin ? userData.lastLogin.toDate() : new Date(0);
             
+            // Yeni gün kontrolü ile hak sıfırlama
             if (now.setHours(0,0,0,0) > lastLogin.setHours(0,0,0,0)) {
                 await userRef.update({ dailySpins: 1, lastLogin: now });
                 userData.dailySpins = 1; 
             }
             
+            // Kullanıcıyı doğru ekrana yönlendir
             if (!user.emailVerified) {
-                mainApp.classList.add('hidden');
-                onboardingModal.classList.add('hidden');
-                verificationMessage.classList.remove('hidden');
-                verificationMessage.innerHTML = `<p>${translations[currentLang].verifTitle} ${translations[currentLang].verifDesc1}<strong>${user.email}</strong>${translations[currentLang].verifDesc2}</p>`;
+                showView('verify');
+                document.getElementById('verification-message').innerHTML = `<p>${translations[currentLang].verifTitle} ${translations[currentLang].verifDesc1}<strong>${user.email}</strong>${translations[currentLang].verifDesc2}</p>`;
             } else if (userData.profileComplete === false) {
-                mainApp.classList.add('hidden');
-                verificationMessage.classList.add('hidden');
-                onboardingModal.classList.remove('hidden');
+                showView('onboarding');
                 document.getElementById('onboarding-name').value = userData.name || '';
                 document.getElementById('onboarding-surname').value = userData.surname || '';
             } else {
-                mainApp.classList.remove('hidden');
-                verificationMessage.classList.add('hidden');
-                onboardingModal.classList.add('hidden');
+                showView('app');
                 document.getElementById('user-display-name').textContent = userData.name;
                 document.getElementById('spin-count').textContent = userData.dailySpins || 0;
 
@@ -137,17 +161,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (userData.lastClaim) { 
                     updateCountdown(userData.lastClaim.toDate().getTime()); 
                 } else { 
-                    const countdownEl = document.getElementById('countdown-timer');
-                    if (countdownEl) countdownEl.textContent = '00:00:00'; 
+                    document.getElementById('countdown-timer').textContent = '00:00:00'; 
                 }
                 displayWinnings(user.uid);
             }
         } else {
-            mainContainer.classList.remove('hidden');
-            appContainer.classList.add('hidden');
+            showView('login');
         }
+        setLanguage(currentLang);
     });
 
+    // --- DİĞER OLAY DİNLEYİCİLERİ ---
     langEnButton.addEventListener('click', () => setLanguage('en'));
     langTrButton.addEventListener('click', () => setLanguage('tr'));
     showSignup.addEventListener('click', (e) => { e.preventDefault(); loginForm.classList.add('hidden'); signupForm.classList.remove('hidden'); });
@@ -156,9 +180,9 @@ document.addEventListener('DOMContentLoaded', () => {
     onboardingSubmitButton.addEventListener('click', async () => {
         const user = auth.currentUser; if (!user) return;
         const name = document.getElementById('onboarding-name').value, surname = document.getElementById('onboarding-surname').value, platform = document.getElementById('onboarding-platform').value, platformUsername = document.getElementById('onboarding-platform-username').value;
-        if (!name || !surname || !platform || !platformUsername) { return alert("Please fill all fields"); }
+        if (!name || !surname || !platform || !platformUsername) { return alert(translations[currentLang].fillAllFieldsError || "Please fill all fields"); }
         await db.collection('users').doc(user.uid).update({ name, surname, followedPlatform: platform, platformUsername, profileComplete: true });
-        window.location.reload();
+        // onAuthStateChanged tetikleneceği için reload'a gerek yok, UI kendi güncellenir.
     });
 
     signupButton.addEventListener('click', () => {
@@ -198,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error("Google sign-in error", error));
     });
 
-    logoutButton.addEventListener('click', () => auth.signOut().then(() => window.location.reload()));
+    logoutButton.addEventListener('click', () => auth.signOut());
 
     claimButton.addEventListener('click', async () => {
         const user = auth.currentUser; if (!user || !user.emailVerified) return;
@@ -268,4 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         }, 5500);
     });
+
+    // İlk yüklemede dili ayarla
+    setLanguage(currentLang);
 });
