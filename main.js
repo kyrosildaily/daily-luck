@@ -286,6 +286,7 @@ logoutButton.addEventListener('click', () => {
     auth.signOut().then(() => window.location.reload());
 });
 
+// Ödül Alma Butonu (DÜZELTİLMİŞ ANİMASYON MANTIĞI)
 claimButton.addEventListener('click', async () => {
     const user = auth.currentUser;
     if (!user || !user.emailVerified) return;
@@ -347,7 +348,9 @@ claimButton.addEventListener('click', async () => {
         const targetPosition = (reelLength - 5) * itemWidth;
         const containerWidth = reel.parentElement.offsetWidth;
         const offset = (containerWidth / 2) - (itemWidth / 2);
-        const randomJitter = Math.floor(Math.random() * (itemWidth - 20)) - ((itemWidth - 20) / 2);
+        
+        // DÜZELTİLMİŞ SATIR
+        const randomJitter = Math.floor(Math.random() * 20) - 10; // -10px ile +10px arası küçük ve güvenli bir kayma
         
         const finalPosition = -targetPosition + offset + randomJitter;
         reel.style.transform = `translateX(${finalPosition}px)`;
