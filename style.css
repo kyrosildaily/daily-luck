@@ -58,7 +58,7 @@ button:hover { background-color: #166fe5; }
 label { display: block; text-align: left; font-weight: bold; margin-bottom: 5px; font-size: 14px; }
 
 #app-container, #onboarding-modal, #edit-profile-modal {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 100; backdrop-filter: blur(5px); padding: 15px; box-sizing: border-box;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 100; backdrop-filter: blur(5px); padding: 15px; box-sizing: border-box; overflow-y: auto;
 }
 #app-container > div, .modal-content {
     background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); width: 100%;
@@ -118,7 +118,7 @@ button.cancel-button:hover { background-color: #e2e6ea; }
 }
 @media (max-width: 480px) {
     body { padding: 0; }
-    #app-container { overflow-y: auto; align-items: flex-start; padding: 20px 0; }
+    #app-container { align-items: flex-start; padding-top: 20px; padding-bottom: 20px;}
     .language-switcher { top: 10px; right: 10px; }
     .main-container { border-radius: 0; min-height: 100vh; }
     .info-column, .auth-column { padding: 25px; }
