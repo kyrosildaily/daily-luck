@@ -19,8 +19,8 @@ body {
     max-width: 400px;
 }
 
-.form-container {
-    margin-bottom: 2rem;
+.form-container, #social-login {
+    margin-bottom: 1.5rem;
 }
 
 .hidden {
@@ -29,10 +29,11 @@ body {
 
 h1, h2 {
     color: #1c1e21;
+    margin-top: 0;
 }
 
 input {
-    width: calc(100% - 20px);
+    width: calc(100% - 22px);
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ddd;
@@ -46,6 +47,7 @@ button {
     border-radius: 6px;
     background-color: #1877f2;
     color: white;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     margin-top: 10px;
@@ -56,8 +58,26 @@ button:hover {
     background-color: #166fe5;
 }
 
+#google-login-button {
+    background-color: #ffffff;
+    color: #444;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+#google-login-button:hover {
+    background-color: #f7f7f7;
+}
+#google-login-button img {
+    width: 18px;
+    height: 18px;
+}
+
 #logout-button {
     background-color: #fa3e3e;
+    margin-top: 20px;
 }
 
 #logout-button:hover {
@@ -68,5 +88,24 @@ button:hover {
     margin-top: 1rem;
     padding: 1rem;
     border-radius: 6px;
+    font-weight: bold;
+    color: white;
+}
+
+#verification-message {
+    padding: 1rem;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+    border-radius: 6px;
+}
+
+.toggle-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+.toggle-link a {
+    color: #1877f2;
+    text-decoration: none;
     font-weight: bold;
 }
