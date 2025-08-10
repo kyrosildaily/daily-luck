@@ -13,10 +13,10 @@ const db = firebase.firestore();
 
 const translations = {
     en: {
-        mainHeadline: "You're much closer to the grand prize every 24 hours!", howItWorksTitle: "Purpose and Logic of the Game", step1Title: "Create Your Account", step1Desc: "Sign up for free or log in with your Google account.", step2Title: "Try Your Chance", step2Desc: "After logging in, press the daily reward button.", step3Title: "Grab the Prize!", step3Desc: "See your prize instantly and enjoy!", rewardsTitle: "Prizes", grandRewardsTitle: "Grand Prizes", grandRewardsList: `<li>5,000 EURO Cash</li><li>Turkish Airlines $1000 Gift Voucher</li><li>3 Nights 4 Days Santorini Holiday</li><li>3-Day Historical Tour in Athens with Kyrosil</li>`, otherRewardsTitle: "Other Prizes", otherRewardsList: `<li>Trendyol 50€ or 2,000₺ Gift Voucher</li><li>Adidas 100€ or 5,000₺ Gift Voucher</li><li>CarrefourSA 50€ or 2,000₺ Gift Voucher</li><li>50 USDT Cash</li><li>THY One-Way Ticket (Select Routes)</li><li>Burger King & Starbucks Gift Vouchers</li>`, rewardsNote: "Prizes will be updated continuously.", loginTitle: "Log In", emailPlaceholder: "E-mail", passwordPlaceholder: "Password", loginButton: "Log In", noAccount: "Don't have an account?", signUpLink: "Sign Up", signUpTitle: "Sign Up", namePlaceholder: "First Name", surnamePlaceholder: "Last Name", platformLabel: "Followed Social Media:", platformPlaceholder: "Please select a platform...", platformUsernamePlaceholder: "Your username on the selected platform", passwordMinChar: "Password (at least 6 characters)", signUpButton: "Sign Up", alreadyAccount: "Already have an account?", loginLink: "Log In", orText: "or", googleLoginButton: "Sign in with Google", verifTitle: "Great!", verifDesc1: "One last step. Please verify your email by clicking the link we sent to ", verifDesc2: ". You can refresh the page after verification.", welcomeMessage: "Welcome", tryChanceButton: "Try My Chance!", logoutButton: "Log Out", spinningButton: "Spinning...", comeBackTomorrow: "See You Tomorrow!", limitUsed: "You have used your daily limit. Please try again tomorrow!", congratsMessage: "Congratulations! Your prize is: ", tryAgainMessage: "Try Again Tomorrow", winnerContactMessage: "<br><small>Our team will contact you via e-mail within 12 hours. You can also write to us at dailywin@kyrosil.eu.</small>", completeProfileTitle: "Complete Your Profile", completeProfileDesc: "Welcome! To continue, please confirm your details and provide your social media information.", saveProfileButton: "Save and Continue", spinsRemaining: "Spins Remaining", nextSpinIn: "Next Spin In", extraSpinsTitle: "Get Extra Spins!", extraSpinsDesc: "Your social media information is saved in your profile. Our team can review it and add extra spins to your account.", taskFollowInstagram: "Follow on Instagram", taskFollowX: "Follow on X", taskVisitWebsite: "Visit our Website", winningsHistoryTitle: "Winnings History", noWinnings: "No prizes won yet."
+        mainHeadline: "You're much closer to the grand prize every 24 hours!", howItWorksTitle: "Purpose and Logic of the Game", step1Title: "Create Your Account", step1Desc: "Sign up for free or log in with your Google account.", step2Title: "Try Your Chance", step2Desc: "After logging in, press the daily reward button.", step3Title: "Grab the Prize!", step3Desc: "See your prize instantly and enjoy!", rewardsTitle: "Prizes", grandRewardsTitle: "Grand Prizes", grandRewardsList: `<li>5,000 EURO Cash</li><li>Turkish Airlines $1000 Gift Voucher</li><li>3 Nights 4 Days Santorini Holiday</li><li>3-Day Historical Tour in Athens with Kyrosil</li>`, otherRewardsTitle: "Other Prizes", otherRewardsList: `<li>Trendyol 50€ or 2,000₺ Gift Voucher</li><li>Adidas 100€ or 5,000₺ Gift Voucher</li><li>CarrefourSA 50€ or 2,000₺ Gift Voucher</li><li>50 USDT Cash</li><li>THY One-Way Ticket (Select Routes)</li><li>Burger King & Starbucks Gift Vouchers</li>`, rewardsNote: "Prizes will be updated continuously.", loginTitle: "Log In", emailPlaceholder: "E-mail", passwordPlaceholder: "Password", loginButton: "Log In", noAccount: "Don't have an account?", signUpLink: "Sign Up", signUpTitle: "Sign Up", namePlaceholder: "First Name", surnamePlaceholder: "Last Name", platformLabel: "Followed Social Media:", platformPlaceholder: "Please select a platform...", platformUsernamePlaceholder: "Your username on the selected platform", passwordMinChar: "Password (at least 6 characters)", signUpButton: "Sign Up", alreadyAccount: "Already have an account?", loginLink: "Log In", orText: "or", googleLoginButton: "Sign in with Google", verifTitle: "Great!", verifDesc1: "One last step. Please verify your email by clicking the link we sent to ", verifDesc2: ". You can refresh the page after verification.", welcomeMessage: "Welcome", tryChanceButton: "Try My Chance!", logoutButton: "Log Out", spinningButton: "Spinning...", comeBackTomorrow: "See You Tomorrow!", limitUsed: "You have used your daily limit. Please try again tomorrow!", congratsMessage: "Congratulations! Your prize is: ", tryAgainMessage: "Try Again Tomorrow", winnerContactMessage: "<br><small>Our team will contact you via e-mail within 12 hours. You can also write to us at dailywin@kyrosil.eu.</small>", completeProfileTitle: "Complete Your Profile", completeProfileDesc: "Welcome! To continue, please confirm your details and provide your social media information.", saveProfileButton: "Save and Continue", spinsRemaining: "Spins Remaining", nextSpinIn: "Next Spin In", extraSpinsTitle: "Get Extra Spins!", extraSpinsDesc: "Your social media information is saved in your profile. Our team can review it and add extra spins to your account.", taskFollowInstagram: "Follow on Instagram", taskFollowX: "Follow on X", taskVisitWebsite: "Visit our Website", winningsHistoryTitle: "Winnings History", noWinnings: "No prizes won yet.", editProfileButton: "Edit Profile", editProfileTitle: "Edit Your Profile", nameLabel: "First Name:", surnameLabel: "Last Name:", saveChangesButton: "Save Changes", cancelButton: "Cancel", taskEuPortal: "Follow on EU Portal"
     },
     tr: {
-        mainHeadline: "Her 24 saatte bir büyük ödüle çok daha yakınsın!", howItWorksTitle: "Oyunun Amacı ve Mantığı", step1Title: "Hesabını Oluştur", step1Desc: "Hemen ücretsiz bir hesap oluştur veya Google ile giriş yap.", step2Title: "Şansını Dene", step2Desc: "Giriş yaptıktan sonra günlük ödül butonuna bas.", step3Title: "Ödülü Kap!", step3Desc: "Kazandığın ödülü anında gör ve keyfini çıkar!", rewardsTitle: "Ödüller", grandRewardsTitle: "Büyük Ödüller", grandRewardsList: `<li>5.000 EURO Nakit</li><li>Türk Hava Yolları 1000$ Hediye Çeki</li><li>3 Gece 4 Gün Santorini Tatili</li><li>Kyrosil ile Atina'da 3 Gün Tarih Gezisi</li>`, otherRewardsTitle: "Diğer Ödüller", otherRewardsList: `<li>Trendyol 50€ veya 2.000₺ Hediye Çeki</li><li>Adidas 100€ veya 5.000₺ Hediye Çeki</li><li>CarrefourSA 50€ veya 2.000₺ Hediye Çeki</li><li>50 USDT Nakit</li><li>THY Tek Yön Bilet (Belirli Hatlar)</li><li>Burger King & Starbucks Hediye Çekleri</li>`, rewardsNote: "Ödüller sürekli güncellenecektir.", loginTitle: "Giriş Yap", emailPlaceholder: "E-posta", passwordPlaceholder: "Şifre", loginButton: "Giriş Yap", noAccount: "Hesabın yok mu?", signUpLink: "Üye Ol", signUpTitle: "Üye Ol", namePlaceholder: "İsim", surnamePlaceholder: "Soyisim", platformLabel: "Takip Edilen Sosyal Medya:", platformPlaceholder: "Lütfen bir platform seçin...", platformUsernamePlaceholder: "Seçtiğiniz Platformdaki Kullanıcı Adınız", passwordMinChar: "Şifre (en az 6 karakter)", signUpButton: "Üye Ol", alreadyAccount: "Zaten üye misin?", loginLink: "Giriş Yap", orText: "veya", googleLoginButton: "Google ile Giriş Yap", verifTitle: "Harika!", verifDesc1: "Son bir adım kaldı. Lütfen ", verifDesc2: " adresine gönderdiğimiz linke tıkla. Onayladıktan sonra sayfayı yenileyebilirsin.", welcomeMessage: "Hoş Geldin", tryChanceButton: "Şansımı Dene!", logoutButton: "Çıkış Yap", spinningButton: "Çark Dönüyor...", comeBackTomorrow: "Yarın Tekrar Görüşürüz!", limitUsed: "Bugünlük hakkını kullandın. Lütfen yarın tekrar dene!", congratsMessage: "Tebrikler! Ödülün: ", tryAgainMessage: "Yarın Tekrar Dene", winnerContactMessage: "<br><small>Ekibimiz 12 saat içinde e-posta üzerinden sizinle iletişime geçecektir. Dilerseniz siz de dailywin@kyrosil.eu adresine yazabilirsiniz.</small>", spinsRemaining: "Kalan Hak", nextSpinIn: "Sonraki Hak", extraSpinsTitle: "Ekstra Hak Kazan!", extraSpinsDesc: "Sosyal medya bilgileriniz profilinizde kayıtlıdır. Ekibimiz kontrol ederek hesabınıza ekstra haklar ekleyebilir.", taskFollowInstagram: "Instagram'da Takip Et", taskFollowX: "X'te Takip Et", taskVisitWebsite: "Websitemizi Ziyaret Et", winningsHistoryTitle: "Kazanç Geçmişi", noWinnings: "Henüz kazanılmış bir ödül yok."
+        mainHeadline: "Her 24 saatte bir büyük ödüle çok daha yakınsın!", howItWorksTitle: "Oyunun Amacı ve Mantığı", step1Title: "Hesabını Oluştur", step1Desc: "Hemen ücretsiz bir hesap oluştur veya Google ile giriş yap.", step2Title: "Şansını Dene", step2Desc: "Giriş yaptıktan sonra günlük ödül butonuna bas.", step3Title: "Ödülü Kap!", step3Desc: "Kazandığın ödülü anında gör ve keyfini çıkar!", rewardsTitle: "Ödüller", grandRewardsTitle: "Büyük Ödüller", grandRewardsList: `<li>5.000 EURO Nakit</li><li>Türk Hava Yolları 1000$ Hediye Çeki</li><li>3 Gece 4 Gün Santorini Tatili</li><li>Kyrosil ile Atina'da 3 Gün Tarih Gezisi</li>`, otherRewardsTitle: "Diğer Ödüller", otherRewardsList: `<li>Trendyol 50€ veya 2.000₺ Hediye Çeki</li><li>Adidas 100€ veya 5.000₺ Hediye Çeki</li><li>CarrefourSA 50€ veya 2.000₺ Hediye Çeki</li><li>50 USDT Nakit</li><li>THY Tek Yön Bilet (Belirli Hatlar)</li><li>Burger King & Starbucks Hediye Çekleri</li>`, rewardsNote: "Ödüller sürekli güncellenecektir.", loginTitle: "Giriş Yap", emailPlaceholder: "E-posta", passwordPlaceholder: "Şifre", loginButton: "Giriş Yap", noAccount: "Hesabın yok mu?", signUpLink: "Üye Ol", signUpTitle: "Üye Ol", namePlaceholder: "İsim", surnamePlaceholder: "Soyisim", platformLabel: "Takip Edilen Sosyal Medya:", platformPlaceholder: "Lütfen bir platform seçin...", platformUsernamePlaceholder: "Seçtiğiniz Platformdaki Kullanıcı Adınız", passwordMinChar: "Şifre (en az 6 karakter)", signUpButton: "Üye Ol", alreadyAccount: "Zaten üye misin?", loginLink: "Giriş Yap", orText: "veya", googleLoginButton: "Google ile Giriş Yap", verifTitle: "Harika!", verifDesc1: "Son bir adım kaldı. Lütfen ", verifDesc2: " adresine gönderdiğimiz linke tıkla. Onayladıktan sonra sayfayı yenileyebilirsin.", welcomeMessage: "Hoş Geldin", tryChanceButton: "Şansımı Dene!", logoutButton: "Çıkış Yap", spinningButton: "Çark Dönüyor...", comeBackTomorrow: "Yarın Tekrar Görüşürüz!", limitUsed: "Bugünlük hakkını kullandın. Lütfen yarın tekrar dene!", congratsMessage: "Tebrikler! Ödülün: ", tryAgainMessage: "Yarın Tekrar Dene", winnerContactMessage: "<br><small>Ekibimiz 12 saat içinde e-posta üzerinden sizinle iletişime geçecektir. Dilerseniz siz de dailywin@kyrosil.eu adresine yazabilirsiniz.</small>", completeProfileTitle: "Profilini Tamamla", completeProfileDesc: "Hoş geldin! Devam etmek için lütfen bilgilerini onayla ve sosyal medya bilgilerini gir.", saveProfileButton: "Kaydet ve Devam Et", spinsRemaining: "Kalan Hak", nextSpinIn: "Sonraki Hak", extraSpinsTitle: "Ekstra Hak Kazan!", extraSpinsDesc: "Sosyal medya bilgileriniz profilinizde kayıtlıdır. Ekibimiz kontrol ederek hesabınıza ekstra haklar ekleyebilir.", taskFollowInstagram: "Instagram'da Takip Et", taskFollowX: "X'te Takip Et", taskVisitWebsite: "Websitemizi Ziyaret Et", winningsHistoryTitle: "Kazanç Geçmişi", noWinnings: "Henüz kazanılmış bir ödül yok.", editProfileButton: "Profilimi Düzenle", editProfileTitle: "Profilini Düzenle", nameLabel: "İsim:", surnameLabel: "Soyisim:", saveChangesButton: "Değişiklikleri Kaydet", cancelButton: "İptal", taskEuPortal: "EU Portal'da Takip Et"
     }
 };
 
@@ -28,13 +28,12 @@ const rewards = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-
-    // --- TÜM ELEMENTLERİ SEÇ ---
     const mainContainer = document.querySelector('.main-container');
     const appContainer = document.getElementById('app-container');
     const verificationMessage = document.getElementById('verification-message');
     const mainApp = document.getElementById('main-app');
     const onboardingModal = document.getElementById('onboarding-modal');
+    const editProfileModal = document.getElementById('edit-profile-modal');
     const loginForm = document.getElementById('login-form');
     const signupForm = document.getElementById('signup-form');
     const showSignup = document.getElementById('show-signup');
@@ -45,43 +44,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutButton = document.getElementById('logout-button');
     const claimButton = document.getElementById('claim-button');
     const onboardingSubmitButton = document.getElementById('onboarding-submit');
+    const editProfileButton = document.getElementById('edit-profile-button');
+    const editProfileSubmitButton = document.getElementById('edit-profile-submit');
+    const editProfileCancelButton = document.getElementById('edit-profile-cancel');
     const langEnButton = document.getElementById('lang-en');
     const langTrButton = document.getElementById('lang-tr');
 
-    // --- GÖRÜNÜM YÖNETİCİSİ ---
     const showView = (viewName) => {
         mainContainer.classList.add('hidden');
         appContainer.classList.add('hidden');
         mainApp.classList.add('hidden');
         verificationMessage.classList.add('hidden');
         onboardingModal.classList.add('hidden');
+        editProfileModal.classList.add('hidden');
 
-        if (viewName === 'login') {
-            mainContainer.classList.remove('hidden');
-        } else if (viewName === 'app') {
-            appContainer.classList.remove('hidden');
-            mainApp.classList.remove('hidden');
-        } else if (viewName === 'verify') {
-            appContainer.classList.remove('hidden');
-            verificationMessage.classList.remove('hidden');
-        } else if (viewName === 'onboarding') {
-            appContainer.classList.add('hidden'); // Onboarding kendi modal yapısını kullanır
-            onboardingModal.classList.remove('hidden');
-        }
+        if (viewName === 'login') mainContainer.classList.remove('hidden');
+        else if (viewName === 'app') { appContainer.classList.remove('hidden'); mainApp.classList.remove('hidden');}
+        else if (viewName === 'verify') { appContainer.classList.remove('hidden'); verificationMessage.classList.remove('hidden');}
+        else if (viewName === 'onboarding') onboardingModal.classList.remove('hidden');
+        else if (viewName === 'editProfile') editProfileModal.classList.remove('hidden');
     };
     
-    // --- DİL FONKSİYONU ---
     const setLanguage = (lang) => {
         currentLang = lang; localStorage.setItem('lang', lang); document.documentElement.lang = lang;
         document.querySelectorAll('[data-key]').forEach(elem => { if(elem) elem.innerHTML = translations[lang][elem.getAttribute('data-key')] || ''; });
         document.querySelectorAll('[data-placeholder-key]').forEach(elem => { if(elem) elem.placeholder = translations[lang][elem.getAttribute('data-placeholder-key')] || ''; });
-        const platformSelects = document.querySelectorAll('#signup-platform, #onboarding-platform');
+        const platformSelects = document.querySelectorAll('#signup-platform, #onboarding-platform, #edit-platform');
         platformSelects.forEach(platformSelect => { if (platformSelect) { platformSelect.innerHTML = `<option value="">${translations[lang].platformPlaceholder}</option><option value="EU Portal">EU Portal</option><option value="Instagram">Instagram</option><option value="X">X (Twitter)</option><option value="TikTok">TikTok</option><option value="Linkedin">Linkedin</option>`; }});
         langEnButton.classList.toggle('active', lang === 'en');
         langTrButton.classList.toggle('active', lang === 'tr');
     };
 
-    // --- DASHBOARD GÜNCELLEME FONKSİYONLARI ---
     const updateCountdown = (claimTimestamp) => {
         if (countdownInterval) clearInterval(countdownInterval);
         const countdownEl = document.getElementById('countdown-timer');
@@ -113,57 +106,46 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
-    // --- ANA GİRİŞ KONTROLÜ ---
+    const renderDashboard = (user, userData) => {
+        showView('app');
+        document.getElementById('user-display-name').textContent = userData.name;
+        document.getElementById('spin-count').textContent = userData.dailySpins || 0;
+        if ((userData.dailySpins || 0) < 1) {
+            claimButton.disabled = true;
+            claimButton.textContent = translations[currentLang].comeBackTomorrow;
+        } else {
+            claimButton.disabled = false;
+            claimButton.textContent = translations[currentLang].tryChanceButton;
+        }
+        if (userData.lastClaim) { updateCountdown(userData.lastClaim.toDate().getTime()); }
+        else { document.getElementById('countdown-timer').textContent = '00:00:00'; }
+        displayWinnings(user.uid);
+    };
+
     auth.onAuthStateChanged(async (user) => {
         if (user) {
             const userRef = db.collection('users').doc(user.uid);
             let doc = await userRef.get();
+            if (!doc.exists) return; // Should not happen
             
-            // Kullanıcı dökümanı yoksa oluştur (bu normalde signup/google ile olur, güvenlik için)
-            if (!doc.exists) {
-                await userRef.set({
-                    email: user.email, name: user.displayName || 'New User', createdAt: firebase.firestore.FieldValue.serverTimestamp(), profileComplete: false, dailySpins: 1, lastLogin: new Date()
-                });
-                doc = await userRef.get();
-            }
-
-            const userData = doc.data();
+            let userData = doc.data();
             const now = new Date();
             const lastLogin = userData.lastLogin ? userData.lastLogin.toDate() : new Date(0);
             
-            // Yeni gün kontrolü ile hak sıfırlama
             if (now.setHours(0,0,0,0) > lastLogin.setHours(0,0,0,0)) {
                 await userRef.update({ dailySpins: 1, lastLogin: now });
                 userData.dailySpins = 1; 
             }
             
-            // Kullanıcıyı doğru ekrana yönlendir
             if (!user.emailVerified) {
                 showView('verify');
-                document.getElementById('verification-message').innerHTML = `<p>${translations[currentLang].verifTitle} ${translations[currentLang].verifDesc1}<strong>${user.email}</strong>${translations[currentLang].verifDesc2}</p>`;
+                verificationMessage.innerHTML = `<p>${translations[currentLang].verifTitle} ${translations[currentLang].verifDesc1}<strong>${user.email}</strong>${translations[currentLang].verifDesc2}</p>`;
             } else if (userData.profileComplete === false) {
                 showView('onboarding');
                 document.getElementById('onboarding-name').value = userData.name || '';
                 document.getElementById('onboarding-surname').value = userData.surname || '';
             } else {
-                showView('app');
-                document.getElementById('user-display-name').textContent = userData.name;
-                document.getElementById('spin-count').textContent = userData.dailySpins || 0;
-
-                if ((userData.dailySpins || 0) < 1) {
-                    claimButton.disabled = true;
-                    claimButton.textContent = translations[currentLang].comeBackTomorrow;
-                } else {
-                    claimButton.disabled = false;
-                    claimButton.textContent = translations[currentLang].tryChanceButton;
-                }
-                
-                if (userData.lastClaim) { 
-                    updateCountdown(userData.lastClaim.toDate().getTime()); 
-                } else { 
-                    document.getElementById('countdown-timer').textContent = '00:00:00'; 
-                }
-                displayWinnings(user.uid);
+                renderDashboard(user, userData);
             }
         } else {
             showView('login');
@@ -171,7 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setLanguage(currentLang);
     });
 
-    // --- DİĞER OLAY DİNLEYİCİLERİ ---
     langEnButton.addEventListener('click', () => setLanguage('en'));
     langTrButton.addEventListener('click', () => setLanguage('tr'));
     showSignup.addEventListener('click', (e) => { e.preventDefault(); loginForm.classList.add('hidden'); signupForm.classList.remove('hidden'); });
@@ -180,9 +161,35 @@ document.addEventListener('DOMContentLoaded', () => {
     onboardingSubmitButton.addEventListener('click', async () => {
         const user = auth.currentUser; if (!user) return;
         const name = document.getElementById('onboarding-name').value, surname = document.getElementById('onboarding-surname').value, platform = document.getElementById('onboarding-platform').value, platformUsername = document.getElementById('onboarding-platform-username').value;
-        if (!name || !surname || !platform || !platformUsername) { return alert(translations[currentLang].fillAllFieldsError || "Please fill all fields"); }
-        await db.collection('users').doc(user.uid).update({ name, surname, followedPlatform: platform, platformUsername, profileComplete: true });
-        // onAuthStateChanged tetikleneceği için reload'a gerek yok, UI kendi güncellenir.
+        if (!name || !surname || !platform || !platformUsername) { return alert("Please fill all fields"); }
+        const userRef = db.collection('users').doc(user.uid);
+        await userRef.update({ name, surname, followedPlatform: platform, platformUsername, profileComplete: true });
+        const doc = await userRef.get();
+        renderDashboard(user, doc.data());
+    });
+
+    editProfileButton.addEventListener('click', async () => {
+        const user = auth.currentUser; if (!user) return;
+        const doc = await db.collection('users').doc(user.uid).get();
+        if (!doc.exists) return;
+        const userData = doc.data();
+        document.getElementById('edit-name').value = userData.name || '';
+        document.getElementById('edit-surname').value = userData.surname || '';
+        document.getElementById('edit-platform').value = userData.followedPlatform || '';
+        document.getElementById('edit-platform-username').value = userData.platformUsername || '';
+        showView('editProfile');
+    });
+
+    editProfileCancelButton.addEventListener('click', () => showView('app'));
+
+    editProfileSubmitButton.addEventListener('click', async () => {
+        const user = auth.currentUser; if (!user) return;
+        const name = document.getElementById('edit-name').value, surname = document.getElementById('edit-surname').value, platform = document.getElementById('edit-platform').value, platformUsername = document.getElementById('edit-platform-username').value;
+        if (!name || !surname || !platform || !platformUsername) { return alert("Please fill all fields"); }
+        const userRef = db.collection('users').doc(user.uid);
+        await userRef.update({ name, surname, followedPlatform: platform, platformUsername });
+        const doc = await userRef.get();
+        renderDashboard(user, doc.data());
     });
 
     signupButton.addEventListener('click', () => {
@@ -260,8 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const userRef = db.collection('users').doc(user.uid);
 
             await db.collection('users').doc(user.uid).collection('winnings').add({
-                rewardName: winner.name_en, 
-                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                rewardName: winner.name_en, timestamp: firebase.firestore.FieldValue.serverTimestamp()
             });
             displayWinnings(user.uid);
 
@@ -292,7 +298,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         }, 5500);
     });
-
-    // İlk yüklemede dili ayarla
+    
     setLanguage(currentLang);
 });
