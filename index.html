@@ -3,44 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Günlük Ödül Sistemi</title>
+    <title>Gelişmiş Ödül Sistemi</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div id="auth-container">
-        <div class="form-container">
+        <div class="form-container" id="login-form">
             <h2>Giriş Yap</h2>
-            <input type="email" id="login-email" placeholder="E-posta">
-            <input type="password" id="login-password" placeholder="Şifre">
+            <input type="email" id="login-email" placeholder="E-posta" required>
+            <input type="password" id="login-password" placeholder="Şifre" required>
             <button id="login-button">Giriş Yap</button>
+            <p class="toggle-link">Hesabın yok mu? <a href="#" id="show-signup">Üye Ol</a></p>
         </div>
-        <div class="form-container">
+
+        <div class="form-container hidden" id="signup-form">
             <h2>Üye Ol</h2>
-            <input type="email" id="signup-email" placeholder="E-posta">
-            <input type="password" id="signup-password" placeholder="Şifre">
+            <input type="text" id="signup-name" placeholder="İsim" required>
+            <input type="text" id="signup-surname" placeholder="Soyisim" required>
+            <input type="text" id="signup-username" placeholder="Kullanıcı Adı" required>
+            <input type="email" id="signup-email" placeholder="E-posta" required>
+            <input type="password" id="signup-password" placeholder="Şifre (en az 6 karakter)" required>
             <button id="signup-button">Üye Ol</button>
+            <p class="toggle-link">Zaten üye misin? <a href="#" id="show-login">Giriş Yap</a></p>
+        </div>
+
+        <div id="social-login">
+            <p>veya</p>
+            <button id="google-login-button">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                Google ile Giriş Yap
+            </button>
         </div>
     </div>
 
     <div id="app-container" class="hidden">
-        <h1>Hoş Geldin!</h1>
-        <p id="user-email"></p>
-        
-        <div id="reward-section">
-            <p>Ödülünü almak için butona tıkla!</p>
-            <button id="claim-button">Ödülümü Al</button>
-            <div id="message-area"></div>
+        <div id="verification-message" class="hidden">
+            <p>Harika! Son bir adım kaldı. Lütfen <strong><span id="verif-email"></span></strong> adresine gönderdiğimiz linke tıklayarak e-postanı onayla. Onayladıktan sonra sayfayı yenileyebilirsin.</p>
         </div>
-        
-        <button id="logout-button">Çıkış Yap</button>
+
+        <div id="main-app" class="hidden">
+            <h1>Hoş Geldin, <span id="user-display-name"></span>!</h1>
+            <p id="user-email"></p>
+            
+            <div id="reward-section">
+                <p>Ödülünü almak için butona tıkla!</p>
+                <button id="claim-button">Ödülümü Al</button>
+                <div id="message-area"></div>
+            </div>
+            
+            <button id="logout-button">Çıkış Yap</button>
+        </div>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     
-    <script src="main.js"></script>
-
-</body>
+    <script src="main.js"></script> </body>
 </html>
