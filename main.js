@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (now.setHours(0,0,0,0) > lastLogin.setHours(0,0,0,0)) {
                 await userRef.update({ dailySpins: 1, lastLogin: now });
-          _BOS_          userData = (await userRef.get()).data();
+                userData = (await userRef.get()).data();
             }
             
             if (!user.emailVerified) {
@@ -173,11 +173,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = document.getElementById('onboarding-name').value;
         const surname = document.getElementById('onboarding-surname').value;
         const socialProfiles = {
+            euportal: document.getElementById('onboarding-euportal').value,
             instagram: document.getElementById('onboarding-instagram').value,
             x: document.getElementById('onboarding-x').value,
             tiktok: document.getElementById('onboarding-tiktok').value,
-            linkedin: document.getElementById('onboarding-linkedin').value,
-            euportal: document.getElementById('onboarding-euportal').value
+            linkedin: document.getElementById('onboarding-linkedin').value
         };
         if (!name || !surname) { return alert("Please fill at least name and surname"); }
         await userRef.update({ name, surname, socialProfiles, profileComplete: true });
@@ -193,11 +193,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('edit-name').value = userData.name || '';
         document.getElementById('edit-surname').value = userData.surname || '';
         const socialProfiles = userData.socialProfiles || {};
+        document.getElementById('edit-euportal').value = socialProfiles.euportal || '';
         document.getElementById('edit-instagram').value = socialProfiles.instagram || '';
         document.getElementById('edit-x').value = socialProfiles.x || '';
         document.getElementById('edit-tiktok').value = socialProfiles.tiktok || '';
         document.getElementById('edit-linkedin').value = socialProfiles.linkedin || '';
-        document.getElementById('edit-euportal').value = socialProfiles.euportal || '';
         showView('editProfile');
     });
 
@@ -209,11 +209,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = document.getElementById('edit-name').value;
         const surname = document.getElementById('edit-surname').value;
         const socialProfiles = {
+            euportal: document.getElementById('edit-euportal').value,
             instagram: document.getElementById('edit-instagram').value,
             x: document.getElementById('edit-x').value,
             tiktok: document.getElementById('edit-tiktok').value,
-            linkedin: document.getElementById('edit-linkedin').value,
-            euportal: document.getElementById('edit-euportal').value
+            linkedin: document.getElementById('edit-linkedin').value
         };
         if (!name || !surname) { return alert("Please fill at least name and surname"); }
         await userRef.update({ name, surname, socialProfiles });
@@ -224,11 +224,11 @@ document.addEventListener('DOMContentLoaded', () => {
     ui.signupButton.addEventListener('click', () => {
         const name = document.getElementById('signup-name').value, surname = document.getElementById('signup-surname').value, email = document.getElementById('signup-email').value, password = document.getElementById('signup-password').value;
         const socialProfiles = {
+            euportal: document.getElementById('signup-euportal').value,
             instagram: document.getElementById('signup-instagram').value,
             x: document.getElementById('signup-x').value,
             tiktok: document.getElementById('signup-tiktok').value,
-            linkedin: document.getElementById('signup-linkedin').value,
-            euportal: document.getElementById('signup-euportal').value
+            linkedin: document.getElementById('signup-linkedin').value
         };
         if (!name || !surname || !email || !password) return alert("Please fill required fields.");
         auth.createUserWithEmailAndPassword(email, password)
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const doc = await userRef.get();
                 if (!doc.exists) {
                     const newUserData = {
-              _BOS_           name: user.displayName.split(' ')[0], surname: user.displayName.split(' ').slice(1).join(' '), email: user.email, createdAt: firebase.firestore.FieldValue.serverTimestamp(), profileComplete: false, dailySpins: 1, lastLogin: new Date(), socialProfiles: {}
+                        name: user.displayName.split(' ')[0], surname: user.displayName.split(' ').slice(1).join(' '), email: user.email, createdAt: firebase.firestore.FieldValue.serverTimestamp(), profileComplete: false, dailySpins: 1, lastLogin: new Date(), socialProfiles: {}
                     };
                     await userRef.set(newUserData);
                     renderOnboarding(newUserData);
