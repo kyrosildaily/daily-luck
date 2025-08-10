@@ -3,49 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gelişmiş Ödül Sistemi</title>
+    <title>Kyrosil Daily - Her Gün Yeni Bir Şans!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div id="auth-container">
-        <div class="form-container" id="login-form">
-            <h2>Giriş Yap</h2>
-            <input type="email" id="login-email" placeholder="E-posta" required>
-            <input type="password" id="login-password" placeholder="Şifre" required>
-            <button id="login-button">Giriş Yap</button>
-            <p class="toggle-link">Hesabın yok mu? <a href="#" id="show-signup">Üye Ol</a></p>
+    <div class="main-container">
+        <div class="info-column">
+            <h1 class="brand-title">Kyrosil Daily</h1>
+            <h2 class="main-headline">Her 24 saatte bir büyük ödüle çok daha yakınsın!</h2>
+            
+            <div class="section">
+                <h3>Oyunun Amacı ve Mantığı</h3>
+                <div class="how-it-works">
+                    <div class="step">
+                        <span class="step-number">1</span>
+                        <p><strong>Hesabını Oluştur</strong><br>Hemen ücretsiz bir hesap oluştur veya Google ile giriş yap.</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <p><strong>Şansını Dene</strong><br>Giriş yaptıktan sonra günlük ödül butonuna bas.</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <p><strong>Ödülü Kap!</strong><br>Kazandığın ödülü anında gör ve keyfini çıkar!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Ödüller</h3>
+                <h4>Büyük Ödüller</h4>
+                <ul class="rewards-list">
+                    <li>5.000 EURO Nakit</li>
+                    <li>Türk Hava Yolları 1000$ Hediye Çeki</li>
+                    <li>3 Gece 4 Gün Santorini Tatili</li>
+                    <li>Kyrosil ile Atina'da 3 Gün Tarih Gezisi</li>
+                </ul>
+
+                <h4>Diğer Ödüller</h4>
+                <ul class="rewards-list">
+                    <li>Trendyol 50€ veya 2.000₺ Hediye Çeki</li>
+                    <li>Adidas 100€ veya 5.000₺ Hediye Çeki</li>
+                    <li>CarrefourSA 50€ veya 2.000₺ Hediye Çeki</li>
+                    <li>50 USDT Nakit</li>
+                    <li>THY Tek Yön Bilet (Belirli Hatlar)</li>
+                    <li>Burger King & Starbucks Hediye Çekleri</li>
+                </ul>
+                <p class="rewards-note">Ödüller sürekli güncellenecektir.</p>
+            </div>
         </div>
 
-        <div class="form-container hidden" id="signup-form">
-            <h2>Üye Ol</h2>
-            <input type="text" id="signup-name" placeholder="İsim" required>
-            <input type="text" id="signup-surname" placeholder="Soyisim" required>
-            
-            <label for="signup-platform">Takip Edilen Sosyal Medya:</label>
-            <select id="signup-platform" required>
-                <option value="">Lütfen bir platform seçin...</option>
-                <option value="EU Portal">EU Portal</option>
-                <option value="Instagram">Instagram</option>
-                <option value="X">X (Twitter)</option>
-                <option value="TikTok">TikTok</option>
-                <option value="Linkedin">Linkedin</option>
-            </select>
-            
-            <input type="text" id="signup-platform-username" placeholder="Seçtiğiniz Platformdaki Kullanıcı Adınız" required>
+        <div class="auth-column">
+            <div id="auth-container">
+                <div class="form-container" id="login-form">
+                    <h2>Giriş Yap</h2>
+                    <input type="email" id="login-email" placeholder="E-posta" required>
+                    <input type="password" id="login-password" placeholder="Şifre" required>
+                    <button id="login-button">Giriş Yap</button>
+                    <p class="toggle-link">Hesabın yok mu? <a href="#" id="show-signup">Üye Ol</a></p>
+                </div>
 
-            <input type="email" id="signup-email" placeholder="E-posta" required>
-            <input type="password" id="signup-password" placeholder="Şifre (en az 6 karakter)" required>
-            <button id="signup-button">Üye Ol</button>
-            <p class="toggle-link">Zaten üye misin? <a href="#" id="show-login">Giriş Yap</a></p>
-        </div>
+                <div class="form-container hidden" id="signup-form">
+                    <h2>Üye Ol</h2>
+                    <input type="text" id="signup-name" placeholder="İsim" required>
+                    <input type="text" id="signup-surname" placeholder="Soyisim" required>
+                    
+                    <label for="signup-platform">Takip Edilen Sosyal Medya:</label>
+                    <select id="signup-platform" required>
+                        <option value="">Lütfen bir platform seçin...</option>
+                        <option value="EU Portal">EU Portal</option>
+                        <option value="Instagram">Instagram</option>
+                        <option value="X">X (Twitter)</option>
+                        <option value="TikTok">TikTok</option>
+                        <option value="Linkedin">Linkedin</option>
+                    </select>
+                    
+                    <input type="text" id="signup-platform-username" placeholder="Seçtiğiniz Platformdaki Kullanıcı Adınız" required>
 
-        <div id="social-login">
-            <p>veya</p>
-            <button id="google-login-button">
-                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
-                Google ile Giriş Yap
-            </button>
+                    <input type="email" id="signup-email" placeholder="E-posta" required>
+                    <input type="password" id="signup-password" placeholder="Şifre (en az 6 karakter)" required>
+                    <button id="signup-button">Üye Ol</button>
+                    <p class="toggle-link">Zaten üye misin? <a href="#" id="show-login">Giriş Yap</a></p>
+                </div>
+
+                <div id="social-login">
+                    <p>veya</p>
+                    <button id="google-login-button">
+                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                        Google ile Giriş Yap
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -53,17 +105,14 @@
         <div id="verification-message" class="hidden">
             <p>Harika! Son bir adım kaldı. Lütfen <strong><span id="verif-email"></span></strong> adresine gönderdiğimiz linke tıklayarak e-postanı onayla. Onayladıktan sonra sayfayı yenileyebilirsin.</p>
         </div>
-
         <div id="main-app" class="hidden">
             <h1>Hoş Geldin, <span id="user-display-name"></span>!</h1>
             <p id="user-email"></p>
-            
             <div id="reward-section">
                 <p>Ödülünü almak için butona tıkla!</p>
                 <button id="claim-button">Ödülümü Al</button>
                 <div id="message-area"></div>
             </div>
-            
             <button id="logout-button">Çıkış Yap</button>
         </div>
     </div>
@@ -71,7 +120,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-    
     <script src="main.js"></script>
 
 </body>
