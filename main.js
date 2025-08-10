@@ -13,10 +13,10 @@ const db = firebase.firestore();
 
 const translations = {
     en: {
-        mainHeadline: "You're much closer to the grand prize every 24 hours!", howItWorksTitle: "Purpose and Logic of the Game", step1Title: "Create Your Account", step1Desc: "Sign up for free or log in with your Google account.", step2Title: "Try Your Chance", step2Desc: "After logging in, press the daily reward button.", step3Title: "Grab the Prize!", step3Desc: "See your prize instantly and enjoy!", rewardsTitle: "Prizes", grandRewardsTitle: "Grand Prizes", grandRewardsList: `<li>5,000 EURO Cash</li><li>Turkish Airlines $1000 Gift Voucher</li><li>3 Nights 4 Days Santorini Holiday</li><li>3-Day Historical Tour in Athens with Kyrosil</li>`, otherRewardsTitle: "Other Prizes", otherRewardsList: `<li>Trendyol 50€ or 2,000₺ Gift Voucher</li><li>Adidas 100€ or 5,000₺ Gift Voucher</li><li>CarrefourSA 50€ or 2,000₺ Gift Voucher</li><li>50 USDT Cash</li><li>THY One-Way Ticket (Select Routes)</li><li>Burger King & Starbucks Gift Vouchers</li>`, rewardsNote: "Prizes will be updated continuously.", loginTitle: "Log In", emailPlaceholder: "E-mail", passwordPlaceholder: "Password", loginButton: "Log In", noAccount: "Don't have an account?", signUpLink: "Sign Up", signUpTitle: "Sign Up", namePlaceholder: "First Name", surnamePlaceholder: "Last Name", platformLabel: "Followed Social Media:", socialProfilesLabel: "Your Social Media Usernames (Optional)", instagramPlaceholder: "Instagram Username", xPlaceholder: "X (Twitter) Username", tiktokPlaceholder: "TikTok Username", linkedinPlaceholder: "LinkedIn Username", platformPlaceholder: "Please select a platform...", passwordMinChar: "Password (at least 6 characters)", signUpButton: "Sign Up", alreadyAccount: "Already have an account?", loginLink: "Log In", orText: "or", googleLoginButton: "Sign in with Google", verifTitle: "Great!", verifDesc1: "One last step. Please verify your email by clicking the link we sent to ", verifDesc2: ". You can refresh the page after verification.", welcomeMessage: "Welcome", tryChanceButton: "Try My Chance!", logoutButton: "Log Out", spinningButton: "Spinning...", comeBackTomorrow: "See You Tomorrow!", limitUsed: "You have used your daily limit. Please try again tomorrow!", congratsMessage: "Congratulations! Your prize is: ", tryAgainMessage: "Try Again Tomorrow", winnerContactMessage: "<br><small>Our team will contact you via e-mail within 12 hours. You can also write to us at dailywin@kyrosil.eu.</small>", completeProfileTitle: "Complete Your Profile", completeProfileDesc: "Welcome! To continue, please confirm your details and provide your social media information.", saveProfileButton: "Save and Continue", spinsRemaining: "Spins Remaining", nextSpinIn: "Next Spin In", extraSpinsTitle: "Get Extra Spins!", extraSpinsDesc: "Your social media information is saved in your profile. Our team can review it and add extra spins to your account.", taskFollowInstagram: "Follow on Instagram", taskFollowX: "Follow on X", taskVisitWebsite: "Visit our Website", winningsHistoryTitle: "Winnings History", noWinnings: "No prizes won yet.", editProfileButton: "Edit Profile", editProfileTitle: "Edit Your Profile", nameLabel: "First Name:", surnameLabel: "Last Name:", saveChangesButton: "Save Changes", cancelButton: "Cancel", taskEuPortal: "Follow on EU Portal"
+        mainHeadline: "You're much closer to the grand prize every 24 hours!", howItWorksTitle: "Purpose and Logic of the Game", step1Title: "Create Your Account", step1Desc: "Sign up for free or log in with your Google account.", step2Title: "Try Your Chance", step2Desc: "After logging in, press the daily reward button.", step3Title: "Grab the Prize!", step3Desc: "See your prize instantly and enjoy!", rewardsTitle: "Prizes", grandRewardsTitle: "Grand Prizes", grandRewardsList: `<li>5,000 EURO Cash</li><li>Turkish Airlines $1000 Gift Voucher</li><li>3 Nights 4 Days Santorini Holiday</li><li>3-Day Historical Tour in Athens with Kyrosil</li>`, otherRewardsTitle: "Other Prizes", otherRewardsList: `<li>Trendyol 50€ or 2,000₺ Gift Voucher</li><li>Adidas 100€ or 5,000₺ Gift Voucher</li><li>CarrefourSA 50€ or 2,000₺ Gift Voucher</li><li>50 USDT Cash</li><li>THY One-Way Ticket (Select Routes)</li><li>Burger King & Starbucks Gift Vouchers</li>`, rewardsNote: "Prizes will be updated continuously.", loginTitle: "Log In", emailPlaceholder: "E-mail", passwordPlaceholder: "Password", loginButton: "Log In", noAccount: "Don't have an account?", signUpLink: "Sign Up", signUpTitle: "Sign Up", namePlaceholder: "First Name", surnamePlaceholder: "Last Name", platformLabel: "Followed Social Media:", socialProfilesLabel: "Your Social Media Usernames (Optional)", instagramPlaceholder: "Instagram Username", xPlaceholder: "X (Twitter) Username", tiktokPlaceholder: "TikTok Username", linkedinPlaceholder: "LinkedIn Username", passwordMinChar: "Password (at least 6 characters)", signUpButton: "Sign Up", alreadyAccount: "Already have an account?", loginLink: "Log In", orText: "or", googleLoginButton: "Sign in with Google", verifTitle: "Great!", verifDesc1: "One last step. Please verify your email by clicking the link we sent to ", verifDesc2: ". You can refresh the page after verification.", welcomeMessage: "Welcome", tryChanceButton: "Try My Chance!", logoutButton: "Log Out", spinningButton: "Spinning...", comeBackTomorrow: "See You Tomorrow!", limitUsed: "You have used your daily limit. Please try again tomorrow!", congratsMessage: "Congratulations! Your prize is: ", tryAgainMessage: "Try Again Tomorrow", winnerContactMessage: "<br><small>Our team will contact you via e-mail within 12 hours. You can also write to us at dailywin@kyrosil.eu.</small>", completeProfileTitle: "Complete Your Profile", completeProfileDesc: "Welcome! To continue, please confirm your details and provide your social media information.", saveProfileButton: "Save and Continue", spinsRemaining: "Spins Remaining", nextSpinIn: "Next Spin In", extraSpinsTitle: "Get Extra Spins!", extraSpinsDesc: "Your social media information is saved in your profile. Our team can review it and add extra spins to your account.", taskFollowInstagram: "Follow on Instagram", taskFollowX: "Follow on X", taskVisitWebsite: "Visit our Website", winningsHistoryTitle: "Winnings History", noWinnings: "No prizes won yet.", editProfileButton: "Edit Profile", editProfileTitle: "Edit Your Profile", nameLabel: "First Name:", surnameLabel: "Last Name:", saveChangesButton: "Save Changes", cancelButton: "Cancel", taskEuPortal: "Follow on EU Portal"
     },
     tr: {
-        mainHeadline: "Her 24 saatte bir büyük ödüle çok daha yakınsın!", howItWorksTitle: "Oyunun Amacı ve Mantığı", step1Title: "Hesabını Oluştur", step1Desc: "Hemen ücretsiz bir hesap oluştur veya Google ile giriş yap.", step2Title: "Şansını Dene", step2Desc: "Giriş yaptıktan sonra günlük ödül butonuna bas.", step3Title: "Ödülü Kap!", step3Desc: "Kazandığın ödülü anında gör ve keyfini çıkar!", rewardsTitle: "Ödüller", grandRewardsTitle: "Büyük Ödüller", grandRewardsList: `<li>5.000 EURO Nakit</li><li>Türk Hava Yolları 1000$ Hediye Çeki</li><li>3 Gece 4 Gün Santorini Tatili</li><li>Kyrosil ile Atina'da 3 Gün Tarih Gezisi</li>`, otherRewardsTitle: "Diğer Ödüller", otherRewardsList: `<li>Trendyol 50€ veya 2.000₺ Hediye Çeki</li><li>Adidas 100€ veya 5.000₺ Hediye Çeki</li><li>CarrefourSA 50€ veya 2.000₺ Hediye Çeki</li><li>50 USDT Nakit</li><li>THY Tek Yön Bilet (Belirli Hatlar)</li><li>Burger King & Starbucks Hediye Çekleri</li>`, rewardsNote: "Ödüller sürekli güncellenecektir.", loginTitle: "Giriş Yap", emailPlaceholder: "E-posta", passwordPlaceholder: "Şifre", loginButton: "Giriş Yap", noAccount: "Hesabın yok mu?", signUpLink: "Üye Ol", signUpTitle: "Üye Ol", namePlaceholder: "İsim", surnamePlaceholder: "Soyisim", platformLabel: "Takip Edilen Sosyal Medya:", socialProfilesLabel: "Sosyal Medya Hesaplarınız (İsteğe Bağlı)", instagramPlaceholder: "Instagram Kullanıcı Adı", xPlaceholder: "X (Twitter) Kullanıcı Adı", tiktokPlaceholder: "TikTok Kullanıcı Adı", linkedinPlaceholder: "LinkedIn Kullanıcı Adı", platformPlaceholder: "Lütfen bir platform seçin...", passwordMinChar: "Şifre (en az 6 karakter)", signUpButton: "Üye Ol", alreadyAccount: "Zaten üye misin?", loginLink: "Giriş Yap", orText: "veya", googleLoginButton: "Google ile Giriş Yap", verifTitle: "Harika!", verifDesc1: "Son bir adım kaldı. Lütfen ", verifDesc2: " adresine gönderdiğimiz linke tıkla. Onayladıktan sonra sayfayı yenileyebilirsin.", welcomeMessage: "Hoş Geldin", tryChanceButton: "Şansımı Dene!", logoutButton: "Çıkış Yap", spinningButton: "Çark Dönüyor...", comeBackTomorrow: "Yarın Tekrar Görüşürüz!", limitUsed: "Bugünlük hakkını kullandın. Lütfen yarın tekrar dene!", congratsMessage: "Tebrikler! Ödülün: ", tryAgainMessage: "Yarın Tekrar Dene", winnerContactMessage: "<br><small>Ekibimiz 12 saat içinde e-posta üzerinden sizinle iletişime geçecektir. Dilerseniz siz de dailywin@kyrosil.eu adresine yazabilirsiniz.</small>", completeProfileTitle: "Profilini Tamamla", completeProfileDesc: "Hoş geldin! Devam etmek için lütfen bilgilerini onayla ve sosyal medya bilgilerini gir.", saveProfileButton: "Kaydet ve Devam Et", spinsRemaining: "Kalan Hak", nextSpinIn: "Sonraki Hak", extraSpinsTitle: "Ekstra Hak Kazan!", extraSpinsDesc: "Sosyal medya bilgileriniz profilinizde kayıtlıdır. Ekibimiz kontrol ederek hesabınıza ekstra haklar ekleyebilir.", taskFollowInstagram: "Instagram'da Takip Et", taskFollowX: "X'te Takip Et", taskVisitWebsite: "Websitemizi Ziyaret Et", winningsHistoryTitle: "Kazanç Geçmişi", noWinnings: "Henüz kazanılmış bir ödül yok.", editProfileButton: "Profilimi Düzenle", editProfileTitle: "Profilini Düzenle", nameLabel: "İsim:", surnameLabel: "Soyisim:", saveChangesButton: "Değişiklikleri Kaydet", cancelButton: "İptal", taskEuPortal: "EU Portal'da Takip Et"
+        mainHeadline: "Her 24 saatte bir büyük ödüle çok daha yakınsın!", howItWorksTitle: "Oyunun Amacı ve Mantığı", step1Title: "Hesabını Oluştur", step1Desc: "Hemen ücretsiz bir hesap oluştur veya Google ile giriş yap.", step2Title: "Şansını Dene", step2Desc: "Giriş yaptıktan sonra günlük ödül butonuna bas.", step3Title: "Ödülü Kap!", step3Desc: "Kazandığın ödülü anında gör ve keyfini çıkar!", rewardsTitle: "Ödüller", grandRewardsTitle: "Büyük Ödüller", grandRewardsList: `<li>5.000 EURO Nakit</li><li>Türk Hava Yolları 1000$ Hediye Çeki</li><li>3 Gece 4 Gün Santorini Tatili</li><li>Kyrosil ile Atina'da 3 Gün Tarih Gezisi</li>`, otherRewardsTitle: "Diğer Ödüller", otherRewardsList: `<li>Trendyol 50€ veya 2.000₺ Hediye Çeki</li><li>Adidas 100€ veya 5.000₺ Hediye Çeki</li><li>CarrefourSA 50€ veya 2.000₺ Hediye Çeki</li><li>50 USDT Nakit</li><li>THY Tek Yön Bilet (Belirli Hatlar)</li><li>Burger King & Starbucks Hediye Çekleri</li>`, rewardsNote: "Ödüller sürekli güncellenecektir.", loginTitle: "Giriş Yap", emailPlaceholder: "E-posta", passwordPlaceholder: "Şifre", loginButton: "Giriş Yap", noAccount: "Hesabın yok mu?", signUpLink: "Üye Ol", signUpTitle: "Üye Ol", namePlaceholder: "İsim", surnamePlaceholder: "Soyisim", platformLabel: "Takip Edilen Sosyal Medya:", socialProfilesLabel: "Sosyal Medya Hesaplarınız (İsteğe Bağlı)", instagramPlaceholder: "Instagram Kullanıcı Adı", xPlaceholder: "X (Twitter) Kullanıcı Adı", tiktokPlaceholder: "TikTok Kullanıcı Adı", linkedinPlaceholder: "LinkedIn Kullanıcı Adı", passwordMinChar: "Şifre (en az 6 karakter)", signUpButton: "Üye Ol", alreadyAccount: "Zaten üye misin?", loginLink: "Giriş Yap", orText: "veya", googleLoginButton: "Google ile Giriş Yap", verifTitle: "Harika!", verifDesc1: "Son bir adım kaldı. Lütfen ", verifDesc2: " adresine gönderdiğimiz linke tıkla. Onayladıktan sonra sayfayı yenileyebilirsin.", welcomeMessage: "Hoş Geldin", tryChanceButton: "Şansımı Dene!", logoutButton: "Çıkış Yap", spinningButton: "Çark Dönüyor...", comeBackTomorrow: "Yarın Tekrar Görüşürüz!", limitUsed: "Bugünlük hakkını kullandın. Lütfen yarın tekrar dene!", congratsMessage: "Tebrikler! Ödülün: ", tryAgainMessage: "Yarın Tekrar Dene", winnerContactMessage: "<br><small>Ekibimiz 12 saat içinde e-posta üzerinden sizinle iletişime geçecektir. Dilerseniz siz de dailywin@kyrosil.eu adresine yazabilirsiniz.</small>", completeProfileTitle: "Profilini Tamamla", completeProfileDesc: "Hoş geldin! Devam etmek için lütfen bilgilerini onayla ve sosyal medya bilgilerini gir.", saveProfileButton: "Kaydet ve Devam Et", spinsRemaining: "Kalan Hak", nextSpinIn: "Sonraki Hak", extraSpinsTitle: "Ekstra Hak Kazan!", extraSpinsDesc: "Sosyal medya bilgileriniz profilinizde kayıtlıdır. Ekibimiz kontrol ederek hesabınıza ekstra haklar ekleyebilir.", taskFollowInstagram: "Instagram'da Takip Et", taskFollowX: "X'te Takip Et", taskVisitWebsite: "Websitemizi Ziyaret Et", winningsHistoryTitle: "Kazanç Geçmişi", noWinnings: "Henüz kazanılmış bir ödül yok.", editProfileButton: "Profilimi Düzenle", editProfileTitle: "Profilini Düzenle", nameLabel: "İsim:", surnameLabel: "Soyisim:", saveChangesButton: "Değişiklikleri Kaydet", cancelButton: "İptal", taskEuPortal: "EU Portal'da Takip Et"
     }
 };
 
@@ -28,7 +28,6 @@ const rewards = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-
     const ui = {
         mainContainer: document.querySelector('.main-container'),
         appContainer: document.getElementById('app-container'),
@@ -51,10 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const showView = (viewName) => {
-        Object.values(ui).forEach(el => el.classList.add('hidden')); // Hide all containers first
+        const views = [ui.mainContainer, ui.appContainer, ui.onboardingModal, ui.editProfileModal];
+        views.forEach(view => view.classList.add('hidden'));
+
         if (viewName === 'login') ui.mainContainer.classList.remove('hidden');
-        else if (viewName === 'app') { ui.appContainer.classList.remove('hidden'); ui.mainApp.classList.remove('hidden'); }
-        else if (viewName === 'verify') { ui.appContainer.classList.remove('hidden'); ui.verificationMessage.classList.remove('hidden'); }
+        else if (viewName === 'app') ui.appContainer.classList.remove('hidden');
         else if (viewName === 'onboarding') ui.onboardingModal.classList.remove('hidden');
         else if (viewName === 'editProfile') ui.editProfileModal.classList.remove('hidden');
     };
@@ -73,9 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const nextClaimTime = claimTimestamp + (24 * 60 * 60 * 1000);
         countdownInterval = setInterval(() => {
             const distance = nextClaimTime - new Date().getTime();
-            if (distance < 0) {
-                clearInterval(countdownInterval); countdownEl.textContent = "00:00:00"; return;
-            }
+            if (distance < 0) { clearInterval(countdownInterval); countdownEl.textContent = "00:00:00"; return; }
             const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
             const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
             const s = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
@@ -90,8 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!querySnapshot.empty) {
             listEl.innerHTML = '';
             querySnapshot.forEach(doc => {
-                const data = doc.data();
-                const date = data.timestamp.toDate();
+                const data = doc.data(); const date = data.timestamp.toDate();
                 const fDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
                 listEl.innerHTML += `<li><span>${data.rewardName}</span><span class="date">${fDate}</span></li>`;
             });
@@ -100,6 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const renderDashboard = (user, userData) => {
         showView('app');
+        ui.mainApp.classList.remove('hidden');
+        ui.verificationMessage.classList.add('hidden');
         document.getElementById('user-display-name').textContent = userData.name;
         document.getElementById('spin-count').textContent = userData.dailySpins || 0;
         if ((userData.dailySpins || 0) < 1) {
@@ -121,15 +120,17 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const renderVerification = (user) => {
-        showView('verify');
-        document.getElementById('verification-message').innerHTML = `<p>${translations[currentLang].verifTitle} ${translations[currentLang].verifDesc1}<strong>${user.email}</strong>${translations[currentLang].verifDesc2}</p>`;
+        showView('app');
+        ui.mainApp.classList.add('hidden');
+        ui.verificationMessage.classList.remove('hidden');
+        ui.verificationMessage.innerHTML = `<p>${translations[currentLang].verifTitle} ${translations[currentLang].verifDesc1}<strong>${user.email}</strong>${translations[currentLang].verifDesc2}</p>`;
     };
     
     auth.onAuthStateChanged(async (user) => {
         if (user) {
             const userRef = db.collection('users').doc(user.uid);
             let doc = await userRef.get();
-            if (!doc.exists) return;
+            if (!doc.exists) { console.error("User document not found!"); return; }
             
             let userData = doc.data();
             const now = new Date();
@@ -245,8 +246,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         name: user.displayName.split(' ')[0], surname: user.displayName.split(' ').slice(1).join(' '), email: user.email, createdAt: firebase.firestore.FieldValue.serverTimestamp(), profileComplete: false, dailySpins: 1, lastLogin: new Date(), socialProfiles: {}
                     };
                     await userRef.set(newUserData);
-                    renderOnboarding(newUserData); // Render onboarding immediately
-                    setLanguage(currentLang); // Ensure text is visible
+                    renderOnboarding(newUserData);
+                    setLanguage(currentLang);
                 }
             })
             .catch(error => console.error("Google sign-in error", error));
