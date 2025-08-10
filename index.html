@@ -31,7 +31,22 @@
             <h2 class="main-headline" data-key="mainHeadline"></h2>
             
             <div class="section">
+                <h3 data-key="howItWorksTitle"></h3>
+                <div class="how-it-works">
+                    <div class="step"><span class="step-number">1</span><p><strong data-key="step1Title"></strong><br><span data-key="step1Desc"></span></p></div>
+                    <div class="step"><span class="step-number">2</span><p><strong data-key="step2Title"></strong><br><span data-key="step2Desc"></span></p></div>
+                    <div class="step"><span class="step-number">3</span><p><strong data-key="step3Title"></strong><br><span data-key="step3Desc"></span></p></div>
                 </div>
+            </div>
+
+            <div class="section">
+                <h3 data-key="rewardsTitle"></h3>
+                <h4 data-key="grandRewardsTitle"></h4>
+                <ul class="rewards-list" data-key="grandRewardsList"></ul>
+                <h4 data-key="otherRewardsTitle"></h4>
+                <ul class="rewards-list" data-key="otherRewardsList"></ul>
+                <p class="rewards-note" data-key="rewardsNote"></p>
+            </div>
         </div>
 
         <div class="auth-column">
@@ -65,10 +80,53 @@
             </div>
         </div>
     </div>
+
+    <div id="app-container" class="hidden">
+        <div id="main-app" class="hidden">
+            <div class="dashboard-header">
+                <h1 class="welcome-text"><span data-key="welcomeMessage"></span>, <span id="user-display-name"></span>!</h1>
+                <button id="logout-button" data-key="logoutButton"></button>
+            </div>
+            <div class="dashboard-grid">
+                <div class="grid-item stats-spins"><h3 data-key="spinsRemaining"></h3><p id="spin-count">1</p></div>
+                <div class="grid-item stats-timer"><h3 data-key="nextSpinIn"></h3><p id="countdown-timer">--:--:--</p></div>
+                <div class="grid-item spinner-area">
+                    <div id="reward-section">
+                        <div class="spinner-container"><div class="spinner-marker"></div><div class="spinner-reel"></div></div>
+                        <button id="claim-button" data-key="tryChanceButton"></button>
+                        <div id="message-area"></div>
+                    </div>
+                </div>
+                <div class="grid-item extra-spins">
+                    <h3 data-key="extraSpinsTitle"></h3><p data-key="extraSpinsDesc"></p>
+                    <ul class="task-list">
+                        <li><span class="task-icon">📷</span> <span data-key="taskFollowInstagram"></span></li>
+                        <li><span class="task-icon">✖️</span> <span data-key="taskFollowX"></span></li>
+                        <li><span class="task-icon">🌐</span> <span data-key="taskVisitWebsite"></span></li>
+                    </ul>
+                </div>
+                <div class="grid-item winnings-history"><h3 data-key="winningsHistoryTitle"></h3><ul id="winnings-list"></ul></div>
+            </div>
+        </div>
+        <div id="verification-message" class="hidden"></div>
+    </div>
+    
+    <div id="onboarding-modal" class="hidden">
+        <div class="modal-content">
+            <h2 data-key="completeProfileTitle"></h2><p data-key="completeProfileDesc"></p>
+            <input type="text" id="onboarding-name" data-placeholder-key="namePlaceholder" required>
+            <input type="text" id="onboarding-surname" data-placeholder-key="surnamePlaceholder" required>
+            <label for="onboarding-platform" data-key="platformLabel"></label>
+            <select id="onboarding-platform" required></select>
+            <input type="text" id="onboarding-platform-username" data-placeholder-key="platformUsernamePlaceholder" required>
+            <button id="onboarding-submit" data-key="saveProfileButton"></button>
+        </div>
+    </div>
     
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="main.js"></script>
+
 </body>
 </html>
