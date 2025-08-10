@@ -21,7 +21,19 @@
             <h2>Üye Ol</h2>
             <input type="text" id="signup-name" placeholder="İsim" required>
             <input type="text" id="signup-surname" placeholder="Soyisim" required>
-            <input type="text" id="signup-username" placeholder="Kullanıcı Adı" required>
+            
+            <label for="signup-platform">Takip Edilen Sosyal Medya:</label>
+            <select id="signup-platform" required>
+                <option value="">Lütfen bir platform seçin...</option>
+                <option value="EU Portal">EU Portal</option>
+                <option value="Instagram">Instagram</option>
+                <option value="X">X (Twitter)</option>
+                <option value="TikTok">TikTok</option>
+                <option value="Linkedin">Linkedin</option>
+            </select>
+            
+            <input type="text" id="signup-platform-username" placeholder="Seçtiğiniz Platformdaki Kullanıcı Adınız" required>
+
             <input type="email" id="signup-email" placeholder="E-posta" required>
             <input type="password" id="signup-password" placeholder="Şifre (en az 6 karakter)" required>
             <button id="signup-button">Üye Ol</button>
@@ -60,5 +72,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     
-    <script src="main.js"></script> </body>
+    <script src="main.js"></script>
+
+</body>
 </html>
