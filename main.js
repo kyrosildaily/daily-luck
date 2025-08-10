@@ -13,10 +13,10 @@ const db = firebase.firestore();
 
 const translations = {
     en: {
-        mainHeadline: "You're much closer to the grand prize every 24 hours!", howItWorksTitle: "Purpose and Logic of the Game", step1Title: "Create Your Account", step1Desc: "Sign up for free or log in with your Google account.", step2Title: "Try Your Chance", step2Desc: "After logging in, press the daily reward button.", step3Title: "Grab the Prize!", step3Desc: "See your prize instantly and enjoy!", rewardsTitle: "Prizes", grandRewardsTitle: "Grand Prizes", grandRewardsList: `<li>5,000 EURO Cash</li><li>Turkish Airlines $1000 Gift Voucher</li><li>3 Nights 4 Days Santorini Holiday</li><li>3-Day Historical Tour in Athens with Kyrosil</li>`, otherRewardsTitle: "Other Prizes", otherRewardsList: `<li>Trendyol 50€ or 2,000₺ Gift Voucher</li><li>Adidas 100€ or 5,000₺ Gift Voucher</li><li>CarrefourSA 50€ or 2,000₺ Gift Voucher</li><li>50 USDT Cash</li><li>THY One-Way Ticket (Select Routes)</li><li>Burger King & Starbucks Gift Vouchers</li>`, rewardsNote: "Prizes will be updated continuously.", loginTitle: "Log In", emailPlaceholder: "E-mail", passwordPlaceholder: "Password", loginButton: "Log In", noAccount: "Don't have an account?", signUpLink: "Sign Up", signUpTitle: "Sign Up", namePlaceholder: "First Name", surnamePlaceholder: "Last Name", platformLabel: "Followed Social Media:", platformPlaceholder: "Please select a platform...", platformUsernamePlaceholder: "Your username on the selected platform", passwordMinChar: "Password (at least 6 characters)", signUpButton: "Sign Up", alreadyAccount: "Already have an account?", loginLink: "Log In", orText: "or", googleLoginButton: "Sign in with Google", verifTitle: "Great!", verifDesc1: "One last step. Please verify your email by clicking the link we sent to ", verifDesc2: ". You can refresh the page after verification.", welcomeMessage: "Welcome", tryChanceButton: "Try My Chance!", logoutButton: "Log Out", spinningButton: "Spinning...", comeBackTomorrow: "See You Tomorrow!", limitUsed: "You have used your daily limit. Please try again tomorrow!", congratsMessage: "Congratulations! Your prize is: ", tryAgainMessage: "Try Again Tomorrow", winnerContactMessage: "<br><small>Our team will contact you via e-mail within 12 hours. You can also write to us at dailywin@kyrosil.eu.</small>", completeProfileTitle: "Complete Your Profile", completeProfileDesc: "Welcome! To continue, please confirm your details and provide your social media information.", saveProfileButton: "Save and Continue", spinsRemaining: "Spins Remaining", nextSpinIn: "Next Spin In", extraSpinsTitle: "Get Extra Spins!", extraSpinsDesc: "Your social media information is saved in your profile. Our team can review it and add extra spins to your account.", taskFollowInstagram: "Follow on Instagram", taskFollowX: "Follow on X", taskVisitWebsite: "Visit our Website", winningsHistoryTitle: "Winnings History", noWinnings: "No prizes won yet.", editProfileButton: "Edit Profile", editProfileTitle: "Edit Your Profile", nameLabel: "First Name:", surnameLabel: "Last Name:", saveChangesButton: "Save Changes", cancelButton: "Cancel", taskEuPortal: "Follow on EU Portal"
+        mainHeadline: "You're much closer to the grand prize every 24 hours!", howItWorksTitle: "Purpose and Logic of the Game", step1Title: "Create Your Account", step1Desc: "Sign up for free or log in with your Google account.", step2Title: "Try Your Chance", step2Desc: "After logging in, press the daily reward button.", step3Title: "Grab the Prize!", step3Desc: "See your prize instantly and enjoy!", rewardsTitle: "Prizes", grandRewardsTitle: "Grand Prizes", grandRewardsList: `<li>5,000 EURO Cash</li><li>Turkish Airlines $1000 Gift Voucher</li><li>3 Nights 4 Days Santorini Holiday</li><li>3-Day Historical Tour in Athens with Kyrosil</li>`, otherRewardsTitle: "Other Prizes", otherRewardsList: `<li>Trendyol 50€ or 2,000₺ Gift Voucher</li><li>Adidas 100€ or 5,000₺ Gift Voucher</li><li>CarrefourSA 50€ or 2,000₺ Gift Voucher</li><li>50 USDT Cash</li><li>THY One-Way Ticket (Select Routes)</li><li>Burger King & Starbucks Gift Vouchers</li>`, rewardsNote: "Prizes will be updated continuously.", loginTitle: "Log In", emailPlaceholder: "E-mail", passwordPlaceholder: "Password", loginButton: "Log In", noAccount: "Don't have an account?", signUpLink: "Sign Up", signUpTitle: "Sign Up", namePlaceholder: "First Name", surnamePlaceholder: "Last Name", platformLabel: "Followed Social Media:", socialProfilesLabel: "Your Social Media Usernames (Optional)", instagramPlaceholder: "Instagram Username", xPlaceholder: "X (Twitter) Username", tiktokPlaceholder: "TikTok Username", linkedinPlaceholder: "LinkedIn Username", platformPlaceholder: "Please select a platform...", platformUsernamePlaceholder: "Your username on the selected platform", passwordMinChar: "Password (at least 6 characters)", signUpButton: "Sign Up", alreadyAccount: "Already have an account?", loginLink: "Log In", orText: "or", googleLoginButton: "Sign in with Google", verifTitle: "Great!", verifDesc1: "One last step. Please verify your email by clicking the link we sent to ", verifDesc2: ". You can refresh the page after verification.", welcomeMessage: "Welcome", tryChanceButton: "Try My Chance!", logoutButton: "Log Out", spinningButton: "Spinning...", comeBackTomorrow: "See You Tomorrow!", limitUsed: "You have used your daily limit. Please try again tomorrow!", congratsMessage: "Congratulations! Your prize is: ", tryAgainMessage: "Try Again Tomorrow", winnerContactMessage: "<br><small>Our team will contact you via e-mail within 12 hours. You can also write to us at dailywin@kyrosil.eu.</small>", completeProfileTitle: "Complete Your Profile", completeProfileDesc: "Welcome! To continue, please confirm your details and provide your social media information.", saveProfileButton: "Save and Continue", spinsRemaining: "Spins Remaining", nextSpinIn: "Next Spin In", extraSpinsTitle: "Get Extra Spins!", extraSpinsDesc: "Your social media information is saved in your profile. Our team can review it and add extra spins to your account.", taskFollowInstagram: "Follow on Instagram", taskFollowX: "Follow on X", taskVisitWebsite: "Visit our Website", winningsHistoryTitle: "Winnings History", noWinnings: "No prizes won yet.", editProfileButton: "Edit Profile", editProfileTitle: "Edit Your Profile", nameLabel: "First Name:", surnameLabel: "Last Name:", saveChangesButton: "Save Changes", cancelButton: "Cancel", taskEuPortal: "Follow on EU Portal"
     },
     tr: {
-        mainHeadline: "Her 24 saatte bir büyük ödüle çok daha yakınsın!", howItWorksTitle: "Oyunun Amacı ve Mantığı", step1Title: "Hesabını Oluştur", step1Desc: "Hemen ücretsiz bir hesap oluştur veya Google ile giriş yap.", step2Title: "Şansını Dene", step2Desc: "Giriş yaptıktan sonra günlük ödül butonuna bas.", step3Title: "Ödülü Kap!", step3Desc: "Kazandığın ödülü anında gör ve keyfini çıkar!", rewardsTitle: "Ödüller", grandRewardsTitle: "Büyük Ödüller", grandRewardsList: `<li>5.000 EURO Nakit</li><li>Türk Hava Yolları 1000$ Hediye Çeki</li><li>3 Gece 4 Gün Santorini Tatili</li><li>Kyrosil ile Atina'da 3 Gün Tarih Gezisi</li>`, otherRewardsTitle: "Diğer Ödüller", otherRewardsList: `<li>Trendyol 50€ veya 2.000₺ Hediye Çeki</li><li>Adidas 100€ veya 5.000₺ Hediye Çeki</li><li>CarrefourSA 50€ veya 2.000₺ Hediye Çeki</li><li>50 USDT Nakit</li><li>THY Tek Yön Bilet (Belirli Hatlar)</li><li>Burger King & Starbucks Hediye Çekleri</li>`, rewardsNote: "Ödüller sürekli güncellenecektir.", loginTitle: "Giriş Yap", emailPlaceholder: "E-posta", passwordPlaceholder: "Şifre", loginButton: "Giriş Yap", noAccount: "Hesabın yok mu?", signUpLink: "Üye Ol", signUpTitle: "Üye Ol", namePlaceholder: "İsim", surnamePlaceholder: "Soyisim", platformLabel: "Takip Edilen Sosyal Medya:", platformPlaceholder: "Lütfen bir platform seçin...", platformUsernamePlaceholder: "Seçtiğiniz Platformdaki Kullanıcı Adınız", passwordMinChar: "Şifre (en az 6 karakter)", signUpButton: "Üye Ol", alreadyAccount: "Zaten üye misin?", loginLink: "Giriş Yap", orText: "veya", googleLoginButton: "Google ile Giriş Yap", verifTitle: "Harika!", verifDesc1: "Son bir adım kaldı. Lütfen ", verifDesc2: " adresine gönderdiğimiz linke tıkla. Onayladıktan sonra sayfayı yenileyebilirsin.", welcomeMessage: "Hoş Geldin", tryChanceButton: "Şansımı Dene!", logoutButton: "Çıkış Yap", spinningButton: "Çark Dönüyor...", comeBackTomorrow: "Yarın Tekrar Görüşürüz!", limitUsed: "Bugünlük hakkını kullandın. Lütfen yarın tekrar dene!", congratsMessage: "Tebrikler! Ödülün: ", tryAgainMessage: "Yarın Tekrar Dene", winnerContactMessage: "<br><small>Ekibimiz 12 saat içinde e-posta üzerinden sizinle iletişime geçecektir. Dilerseniz siz de dailywin@kyrosil.eu adresine yazabilirsiniz.</small>", completeProfileTitle: "Profilini Tamamla", completeProfileDesc: "Hoş geldin! Devam etmek için lütfen bilgilerini onayla ve sosyal medya bilgilerini gir.", saveProfileButton: "Kaydet ve Devam Et", spinsRemaining: "Kalan Hak", nextSpinIn: "Sonraki Hak", extraSpinsTitle: "Ekstra Hak Kazan!", extraSpinsDesc: "Sosyal medya bilgileriniz profilinizde kayıtlıdır. Ekibimiz kontrol ederek hesabınıza ekstra haklar ekleyebilir.", taskFollowInstagram: "Instagram'da Takip Et", taskFollowX: "X'te Takip Et", taskVisitWebsite: "Websitemizi Ziyaret Et", winningsHistoryTitle: "Kazanç Geçmişi", noWinnings: "Henüz kazanılmış bir ödül yok.", editProfileButton: "Profilimi Düzenle", editProfileTitle: "Profilini Düzenle", nameLabel: "İsim:", surnameLabel: "Soyisim:", saveChangesButton: "Değişiklikleri Kaydet", cancelButton: "İptal", taskEuPortal: "EU Portal'da Takip Et"
+        mainHeadline: "Her 24 saatte bir büyük ödüle çok daha yakınsın!", howItWorksTitle: "Oyunun Amacı ve Mantığı", step1Title: "Hesabını Oluştur", step1Desc: "Hemen ücretsiz bir hesap oluştur veya Google ile giriş yap.", step2Title: "Şansını Dene", step2Desc: "Giriş yaptıktan sonra günlük ödül butonuna bas.", step3Title: "Ödülü Kap!", step3Desc: "Kazandığın ödülü anında gör ve keyfini çıkar!", rewardsTitle: "Ödüller", grandRewardsTitle: "Büyük Ödüller", grandRewardsList: `<li>5.000 EURO Nakit</li><li>Türk Hava Yolları 1000$ Hediye Çeki</li><li>3 Gece 4 Gün Santorini Tatili</li><li>Kyrosil ile Atina'da 3 Gün Tarih Gezisi</li>`, otherRewardsTitle: "Diğer Ödüller", otherRewardsList: `<li>Trendyol 50€ veya 2.000₺ Hediye Çeki</li><li>Adidas 100€ veya 5.000₺ Hediye Çeki</li><li>CarrefourSA 50€ veya 2.000₺ Hediye Çeki</li><li>50 USDT Nakit</li><li>THY Tek Yön Bilet (Belirli Hatlar)</li><li>Burger King & Starbucks Hediye Çekleri</li>`, rewardsNote: "Ödüller sürekli güncellenecektir.", loginTitle: "Giriş Yap", emailPlaceholder: "E-posta", passwordPlaceholder: "Şifre", loginButton: "Giriş Yap", noAccount: "Hesabın yok mu?", signUpLink: "Üye Ol", signUpTitle: "Üye Ol", namePlaceholder: "İsim", surnamePlaceholder: "Soyisim", platformLabel: "Takip Edilen Sosyal Medya:", socialProfilesLabel: "Sosyal Medya Hesaplarınız (İsteğe Bağlı)", instagramPlaceholder: "Instagram Kullanıcı Adı", xPlaceholder: "X (Twitter) Kullanıcı Adı", tiktokPlaceholder: "TikTok Kullanıcı Adı", linkedinPlaceholder: "LinkedIn Kullanıcı Adı", platformPlaceholder: "Lütfen bir platform seçin...", platformUsernamePlaceholder: "Seçtiğiniz Platformdaki Kullanıcı Adınız", passwordMinChar: "Şifre (en az 6 karakter)", signUpButton: "Üye Ol", alreadyAccount: "Zaten üye misin?", loginLink: "Giriş Yap", orText: "veya", googleLoginButton: "Google ile Giriş Yap", verifTitle: "Harika!", verifDesc1: "Son bir adım kaldı. Lütfen ", verifDesc2: " adresine gönderdiğimiz linke tıkla. Onayladıktan sonra sayfayı yenileyebilirsin.", welcomeMessage: "Hoş Geldin", tryChanceButton: "Şansımı Dene!", logoutButton: "Çıkış Yap", spinningButton: "Çark Dönüyor...", comeBackTomorrow: "Yarın Tekrar Görüşürüz!", limitUsed: "Bugünlük hakkını kullandın. Lütfen yarın tekrar dene!", congratsMessage: "Tebrikler! Ödülün: ", tryAgainMessage: "Yarın Tekrar Dene", winnerContactMessage: "<br><small>Ekibimiz 12 saat içinde e-posta üzerinden sizinle iletişime geçecektir. Dilerseniz siz de dailywin@kyrosil.eu adresine yazabilirsiniz.</small>", completeProfileTitle: "Profilini Tamamla", completeProfileDesc: "Hoş geldin! Devam etmek için lütfen bilgilerini onayla ve sosyal medya bilgilerini gir.", saveProfileButton: "Kaydet ve Devam Et", spinsRemaining: "Kalan Hak", nextSpinIn: "Sonraki Hak", extraSpinsTitle: "Ekstra Hak Kazan!", extraSpinsDesc: "Sosyal medya bilgileriniz profilinizde kayıtlıdır. Ekibimiz kontrol ederek hesabınıza ekstra haklar ekleyebilir.", taskFollowInstagram: "Instagram'da Takip Et", taskFollowX: "X'te Takip Et", taskVisitWebsite: "Websitemizi Ziyaret Et", winningsHistoryTitle: "Kazanç Geçmişi", noWinnings: "Henüz kazanılmış bir ödül yok.", editProfileButton: "Profilimi Düzenle", editProfileTitle: "Profilini Düzenle", nameLabel: "İsim:", surnameLabel: "Soyisim:", saveChangesButton: "Değişiklikleri Kaydet", cancelButton: "İptal", taskEuPortal: "EU Portal'da Takip Et"
     }
 };
 
@@ -28,6 +28,8 @@ const rewards = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    // --- UI SELECTORS ---
     const mainContainer = document.querySelector('.main-container');
     const appContainer = document.getElementById('app-container');
     const verificationMessage = document.getElementById('verification-message');
@@ -38,43 +40,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const signupForm = document.getElementById('signup-form');
     const showSignup = document.getElementById('show-signup');
     const showLogin = document.getElementById('show-login');
-    const signupButton = document.getElementById('signup-button');
-    const loginButton = document.getElementById('login-button');
-    const googleLoginButton = document.getElementById('google-login-button');
-    const logoutButton = document.getElementById('logout-button');
-    const claimButton = document.getElementById('claim-button');
-    const onboardingSubmitButton = document.getElementById('onboarding-submit');
-    const editProfileButton = document.getElementById('edit-profile-button');
-    const editProfileSubmitButton = document.getElementById('edit-profile-submit');
-    const editProfileCancelButton = document.getElementById('edit-profile-cancel');
     const langEnButton = document.getElementById('lang-en');
     const langTrButton = document.getElementById('lang-tr');
-
+    
+    // --- VIEW MANAGER ---
     const showView = (viewName) => {
         mainContainer.classList.add('hidden');
         appContainer.classList.add('hidden');
-        mainApp.classList.add('hidden');
-        verificationMessage.classList.add('hidden');
         onboardingModal.classList.add('hidden');
         editProfileModal.classList.add('hidden');
 
         if (viewName === 'login') mainContainer.classList.remove('hidden');
-        else if (viewName === 'app') { appContainer.classList.remove('hidden'); mainApp.classList.remove('hidden');}
-        else if (viewName === 'verify') { appContainer.classList.remove('hidden'); verificationMessage.classList.remove('hidden');}
+        else if (viewName === 'app') appContainer.classList.remove('hidden');
         else if (viewName === 'onboarding') onboardingModal.classList.remove('hidden');
         else if (viewName === 'editProfile') editProfileModal.classList.remove('hidden');
     };
     
+    // --- TRANSLATION ---
     const setLanguage = (lang) => {
         currentLang = lang; localStorage.setItem('lang', lang); document.documentElement.lang = lang;
         document.querySelectorAll('[data-key]').forEach(elem => { if(elem) elem.innerHTML = translations[lang][elem.getAttribute('data-key')] || ''; });
         document.querySelectorAll('[data-placeholder-key]').forEach(elem => { if(elem) elem.placeholder = translations[lang][elem.getAttribute('data-placeholder-key')] || ''; });
-        const platformSelects = document.querySelectorAll('#signup-platform, #onboarding-platform, #edit-platform');
-        platformSelects.forEach(platformSelect => { if (platformSelect) { platformSelect.innerHTML = `<option value="">${translations[lang].platformPlaceholder}</option><option value="EU Portal">EU Portal</option><option value="Instagram">Instagram</option><option value="X">X (Twitter)</option><option value="TikTok">TikTok</option><option value="Linkedin">Linkedin</option>`; }});
         langEnButton.classList.toggle('active', lang === 'en');
         langTrButton.classList.toggle('active', lang === 'tr');
     };
 
+    // --- DASHBOARD UI FUNCTIONS ---
     const updateCountdown = (claimTimestamp) => {
         if (countdownInterval) clearInterval(countdownInterval);
         const countdownEl = document.getElementById('countdown-timer');
@@ -105,11 +96,15 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     };
-    
+
     const renderDashboard = (user, userData) => {
         showView('app');
+        mainApp.classList.remove('hidden');
+        verificationMessage.classList.add('hidden');
+
         document.getElementById('user-display-name').textContent = userData.name;
         document.getElementById('spin-count').textContent = userData.dailySpins || 0;
+        const claimButton = document.getElementById('claim-button');
         if ((userData.dailySpins || 0) < 1) {
             claimButton.disabled = true;
             claimButton.textContent = translations[currentLang].comeBackTomorrow;
@@ -121,12 +116,26 @@ document.addEventListener('DOMContentLoaded', () => {
         else { document.getElementById('countdown-timer').textContent = '00:00:00'; }
         displayWinnings(user.uid);
     };
+    
+    const renderOnboarding = (userData) => {
+        showView('onboarding');
+        document.getElementById('onboarding-name').value = userData.name || '';
+        document.getElementById('onboarding-surname').value = userData.surname || '';
+    };
 
+    const renderVerification = (user) => {
+        showView('app'); // Show the main app container
+        mainApp.classList.add('hidden'); // Hide the dashboard
+        verificationMessage.classList.remove('hidden'); // Show the verification message
+        verificationMessage.innerHTML = `<p>${translations[currentLang].verifTitle} ${translations[currentLang].verifDesc1}<strong>${user.email}</strong>${translations[currentLang].verifDesc2}</p>`;
+    };
+    
+    // --- MAIN AUTH ROUTER ---
     auth.onAuthStateChanged(async (user) => {
         if (user) {
             const userRef = db.collection('users').doc(user.uid);
             let doc = await userRef.get();
-            if (!doc.exists) return; // Should not happen
+            if (!doc.exists) return; // Should be handled by sign-in logic
             
             let userData = doc.data();
             const now = new Date();
@@ -134,16 +143,13 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (now.setHours(0,0,0,0) > lastLogin.setHours(0,0,0,0)) {
                 await userRef.update({ dailySpins: 1, lastLogin: now });
-                userData.dailySpins = 1; 
+                userData = (await userRef.get()).data();
             }
             
             if (!user.emailVerified) {
-                showView('verify');
-                verificationMessage.innerHTML = `<p>${translations[currentLang].verifTitle} ${translations[currentLang].verifDesc1}<strong>${user.email}</strong>${translations[currentLang].verifDesc2}</p>`;
+                renderVerification(user);
             } else if (userData.profileComplete === false) {
-                showView('onboarding');
-                document.getElementById('onboarding-name').value = userData.name || '';
-                document.getElementById('onboarding-surname').value = userData.surname || '';
+                renderOnboarding(userData);
             } else {
                 renderDashboard(user, userData);
             }
@@ -153,6 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setLanguage(currentLang);
     });
 
+    // --- EVENT LISTENERS ---
     langEnButton.addEventListener('click', () => setLanguage('en'));
     langTrButton.addEventListener('click', () => setLanguage('tr'));
     showSignup.addEventListener('click', (e) => { e.preventDefault(); loginForm.classList.add('hidden'); signupForm.classList.remove('hidden'); });
@@ -160,14 +167,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     onboardingSubmitButton.addEventListener('click', async () => {
         const user = auth.currentUser; if (!user) return;
-        const name = document.getElementById('onboarding-name').value, surname = document.getElementById('onboarding-surname').value, platform = document.getElementById('onboarding-platform').value, platformUsername = document.getElementById('onboarding-platform-username').value;
-        if (!name || !surname || !platform || !platformUsername) { return alert("Please fill all fields"); }
         const userRef = db.collection('users').doc(user.uid);
-        await userRef.update({ name, surname, followedPlatform: platform, platformUsername, profileComplete: true });
-        const doc = await userRef.get();
-        renderDashboard(user, doc.data());
+        const name = document.getElementById('onboarding-name').value;
+        const surname = document.getElementById('onboarding-surname').value;
+        const socialProfiles = {
+            instagram: document.getElementById('onboarding-instagram').value,
+            x: document.getElementById('onboarding-x').value,
+            tiktok: document.getElementById('onboarding-tiktok').value,
+            linkedin: document.getElementById('onboarding-linkedin').value
+        };
+        if (!name || !surname) { return alert("Please fill at least name and surname"); }
+        await userRef.update({ name, surname, socialProfiles, profileComplete: true });
+        const userData = (await userRef.get()).data();
+        renderDashboard(user, userData);
     });
-
+    
     editProfileButton.addEventListener('click', async () => {
         const user = auth.currentUser; if (!user) return;
         const doc = await db.collection('users').doc(user.uid).get();
@@ -175,8 +189,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const userData = doc.data();
         document.getElementById('edit-name').value = userData.name || '';
         document.getElementById('edit-surname').value = userData.surname || '';
-        document.getElementById('edit-platform').value = userData.followedPlatform || '';
-        document.getElementById('edit-platform-username').value = userData.platformUsername || '';
+        const socialProfiles = userData.socialProfiles || {};
+        document.getElementById('edit-instagram').value = socialProfiles.instagram || '';
+        document.getElementById('edit-x').value = socialProfiles.x || '';
+        document.getElementById('edit-tiktok').value = socialProfiles.tiktok || '';
+        document.getElementById('edit-linkedin').value = socialProfiles.linkedin || '';
         showView('editProfile');
     });
 
@@ -184,22 +201,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     editProfileSubmitButton.addEventListener('click', async () => {
         const user = auth.currentUser; if (!user) return;
-        const name = document.getElementById('edit-name').value, surname = document.getElementById('edit-surname').value, platform = document.getElementById('edit-platform').value, platformUsername = document.getElementById('edit-platform-username').value;
-        if (!name || !surname || !platform || !platformUsername) { return alert("Please fill all fields"); }
         const userRef = db.collection('users').doc(user.uid);
-        await userRef.update({ name, surname, followedPlatform: platform, platformUsername });
-        const doc = await userRef.get();
-        renderDashboard(user, doc.data());
+        const name = document.getElementById('edit-name').value;
+        const surname = document.getElementById('edit-surname').value;
+        const socialProfiles = {
+            instagram: document.getElementById('edit-instagram').value,
+            x: document.getElementById('edit-x').value,
+            tiktok: document.getElementById('edit-tiktok').value,
+            linkedin: document.getElementById('edit-linkedin').value
+        };
+        if (!name || !surname) { return alert("Please fill at least name and surname"); }
+        await userRef.update({ name, surname, socialProfiles });
+        const userData = (await userRef.get()).data();
+        renderDashboard(user, userData);
     });
 
     signupButton.addEventListener('click', () => {
-        const name = document.getElementById('signup-name').value, surname = document.getElementById('signup-surname').value, email = document.getElementById('signup-email').value, password = document.getElementById('signup-password').value, platform = document.getElementById('signup-platform').value, platformUsername = document.getElementById('signup-platform-username').value;
-        if (!name || !surname || !email || !password || !platform || !platformUsername) return alert("Please fill in all fields.");
+        const name = document.getElementById('signup-name').value, surname = document.getElementById('signup-surname').value, email = document.getElementById('signup-email').value, password = document.getElementById('signup-password').value;
+        const socialProfiles = {
+            instagram: document.getElementById('signup-instagram').value,
+            x: document.getElementById('signup-x').value,
+            tiktok: document.getElementById('signup-tiktok').value,
+            linkedin: document.getElementById('signup-linkedin').value
+        };
+        if (!name || !surname || !email || !password) return alert("Please fill required fields.");
         auth.createUserWithEmailAndPassword(email, password)
             .then(userCredential => {
                 const user = userCredential.user;
                 user.sendEmailVerification();
-                return db.collection('users').doc(user.uid).set({ name, surname, email, followedPlatform: platform, platformUsername, createdAt: firebase.firestore.FieldValue.serverTimestamp(), profileComplete: true, dailySpins: 1, lastLogin: new Date() });
+                return db.collection('users').doc(user.uid).set({ name, surname, email, socialProfiles, createdAt: firebase.firestore.FieldValue.serverTimestamp(), profileComplete: true, dailySpins: 1, lastLogin: new Date() });
             })
             .then(() => alert("Great! Your account has been created. Please check your email to verify your account."))
             .catch(error => alert("Error: " + error.message));
@@ -214,17 +244,17 @@ document.addEventListener('DOMContentLoaded', () => {
     googleLoginButton.addEventListener('click', () => {
         const provider = new firebase.auth.GoogleAuthProvider();
         auth.signInWithPopup(provider)
-            .then(result => {
+            .then(async (result) => {
                 const user = result.user, userRef = db.collection('users').doc(user.uid);
-                return userRef.get().then(doc => {
-                    if (!doc.exists) {
-                        userRef.set({
-                            name: user.displayName.split(' ')[0], surname: user.displayName.split(' ').slice(1).join(' '), email: user.email, createdAt: firebase.firestore.FieldValue.serverTimestamp(), profileComplete: false, dailySpins: 1, lastLogin: new Date()
-                        });
-                    } else {
-                        userRef.update({ lastLogin: new Date() });
-                    }
-                });
+                const doc = await userRef.get();
+                if (!doc.exists) {
+                    const newUserData = {
+                        name: user.displayName.split(' ')[0], surname: user.displayName.split(' ').slice(1).join(' '), email: user.email, createdAt: firebase.firestore.FieldValue.serverTimestamp(), profileComplete: false, dailySpins: 1, lastLogin: new Date(), socialProfiles: {}
+                    };
+                    await userRef.set(newUserData);
+                    renderOnboarding(newUserData);
+                    setLanguage(currentLang);
+                }
             })
             .catch(error => console.error("Google sign-in error", error));
     });
@@ -267,7 +297,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const userRef = db.collection('users').doc(user.uid);
 
             await db.collection('users').doc(user.uid).collection('winnings').add({
-                rewardName: winner.name_en, timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                rewardName: winner.name_en, 
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
             });
             displayWinnings(user.uid);
 
