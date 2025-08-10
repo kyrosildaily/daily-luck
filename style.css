@@ -69,9 +69,9 @@ label { display: block; text-align: left; font-weight: bold; margin-bottom: 5px;
 #verification-message { text-align: center; max-width: 500px; }
 
 #main-app { max-width: 900px; }
-.dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 15px;}
+.dashboard-header { display: flex; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 20px;}
 .welcome-text { margin: 0; font-size: 24px; text-align: left; flex-grow: 1; min-width: 0; }
-.dashboard-header > div { display: flex; gap: 10px; flex-shrink: 0; }
+.dashboard-header > div { display: flex; gap: 10px; margin-left: auto; }
 button.secondary-button { background-color: #6c757d; }
 button.secondary-button:hover { background-color: #5a6268; }
 button.cancel-button { background-color: #f8f9fa; color: var(--dark-text); border: 1px solid var(--border-color); }
