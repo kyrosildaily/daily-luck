@@ -85,14 +85,8 @@
                 <button id="logout-button" data-key="logoutButton"></button>
             </div>
             <div class="dashboard-grid">
-                <div class="grid-item stats-spins">
-                    <h3 data-key="spinsRemaining"></h3>
-                    <p id="spin-count">1</p>
-                </div>
-                <div class="grid-item stats-timer">
-                    <h3 data-key="nextSpinIn"></h3>
-                    <p id="countdown-timer">--:--:--</p>
-                </div>
+                <div class="grid-item stats-spins"><h3 data-key="spinsRemaining"></h3><p id="spin-count">1</p></div>
+                <div class="grid-item stats-timer"><h3 data-key="nextSpinIn"></h3><p id="countdown-timer">--:--:--</p></div>
                 <div class="grid-item spinner-area">
                     <div id="reward-section">
                         <div class="spinner-container"><div class="spinner-marker"></div><div class="spinner-reel"></div></div>
@@ -101,10 +95,18 @@
                     </div>
                 </div>
                 <div class="grid-item extra-spins">
-                    <h3>Placeholder for Extra Spins</h3>
+                    <h3 data-key="extraSpinsTitle"></h3>
+                    <p data-key="extraSpinsDesc"></p>
+                    <ul class="task-list">
+                        <li><span class="task-icon">📷</span> <span data-key="taskFollowInstagram"></span></li>
+                        <li><span class="task-icon">✖️</span> <span data-key="taskFollowX"></span></li>
+                        <li><span class="task-icon">🌐</span> <span data-key="taskVisitWebsite"></span></li>
+                    </ul>
                 </div>
                 <div class="grid-item winnings-history">
-                    <h3>Placeholder for Winnings History</h3>
+                    <h3 data-key="winningsHistoryTitle"></h3>
+                    <ul id="winnings-list">
+                        </ul>
                 </div>
             </div>
         </div>
