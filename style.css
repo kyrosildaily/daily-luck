@@ -57,10 +57,10 @@ button:hover { background-color: #166fe5; }
 .toggle-link a { color: var(--secondary-color); text-decoration: none; font-weight: bold; }
 label { display: block; text-align: left; font-weight: bold; margin-bottom: 5px; font-size: 14px; }
 
-#app-container {
+#app-container, #onboarding-modal {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 100; backdrop-filter: blur(5px);
 }
-#app-container > div {
+#app-container > div, .modal-content {
     background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); width: 90%;
 }
 #verification-message { text-align: center; max-width: 500px; }
@@ -81,9 +81,13 @@ label { display: block; text-align: left; font-weight: bold; margin-bottom: 5px;
 #winnings-list { list-style: none; padding: 0; margin: 0; max-height: 150px; overflow-y: auto; }
 #winnings-list li { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee; }
 #winnings-list li .date { font-size: 12px; color: var(--light-text); }
-.task-list { list-style: none; padding: 0; }
-.task-list li { margin-bottom: 10px; color: var(--light-text); }
+.task-list { display: flex; flex-direction: column; gap: 10px; }
+.task-item { color: var(--light-text); text-decoration: none; display: inline-flex; align-items: center; transition: color 0.2s; }
+.task-item:hover { color: var(--primary-color); }
 .task-icon { margin-right: 8px; }
+
+.modal-content { max-width: 450px; text-align: center; }
+.modal-content p { margin: 1rem 0; }
 
 #reward-section { width: 100%; display: flex; flex-direction: column; align-items: center; }
 .spinner-container { width: 100%; height: 120px; background-color: #e9ecef; border: 3px solid #dee2e6; border-radius: 10px; overflow: hidden; position: relative; margin-bottom: 20px; }
@@ -112,5 +116,5 @@ label { display: block; text-align: left; font-weight: bold; margin-bottom: 5px;
     .info-column, .auth-column { padding: 25px; }
     .main-headline { font-size: 24px; }
     .welcome-text { font-size: 20px; }
-    #app-container > div { padding: 1.5rem; }
+    #app-container > div, .modal-content { padding: 1.5rem; }
 }
