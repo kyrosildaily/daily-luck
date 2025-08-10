@@ -130,7 +130,6 @@ const setLanguage = (lang) => {
         }
     });
 
-    // Platform dropdown options
     const platformSelect = document.getElementById('signup-platform');
     if (platformSelect) {
         platformSelect.innerHTML = `
@@ -170,7 +169,7 @@ const langEnButton = document.getElementById('lang-en');
 const langTrButton = document.getElementById('lang-tr');
 
 
-// YENİ ÖDÜL YAPISI (ÇİFT DİLLİ)
+// ÖDÜL YAPISI (ÇİFT DİLLİ)
 const rewards = [
     { id: 'try-again', name_tr: 'Yarın Tekrar Dene', name_en: 'Try Again Tomorrow', chance: 80, rarity: 'common', imageUrl: 'https://img.icons8.com/ios/100/recurring-appointment.png' },
     { id: 'bk-sb', name_tr: 'Burger King & Starbucks Çekleri', name_en: 'Burger King & Starbucks Vouchers', chance: 5, rarity: 'uncommon', imageUrl: 'https://img.icons8.com/ios/100/coffee-to-go.png' },
@@ -286,7 +285,7 @@ logoutButton.addEventListener('click', () => {
     auth.signOut().then(() => window.location.reload());
 });
 
-// Ödül Alma Butonu (DÜZELTİLMİŞ ANİMASYON MANTIĞI)
+// Ödül Alma Butonu (KESİN DÜZELTME)
 claimButton.addEventListener('click', async () => {
     const user = auth.currentUser;
     if (!user || !user.emailVerified) return;
@@ -349,8 +348,8 @@ claimButton.addEventListener('click', async () => {
         const containerWidth = reel.parentElement.offsetWidth;
         const offset = (containerWidth / 2) - (itemWidth / 2);
         
-        // DÜZELTİLMİŞ SATIR
-        const randomJitter = Math.floor(Math.random() * 20) - 10; // -10px ile +10px arası küçük ve güvenli bir kayma
+        // KESİN ÇÖZÜM: KAYMA PAYI (JITTER) KALDIRILDI
+        const randomJitter = 0;
         
         const finalPosition = -targetPosition + offset + randomJitter;
         reel.style.transform = `translateX(${finalPosition}px)`;
@@ -370,7 +369,7 @@ claimButton.addEventListener('click', async () => {
         
         await userRef.set({
             lastClaim: now,
-            lastReward: winner.name_en // Store a consistent reward name in DB
+            lastReward: winner.name_en // Veritabanına tutarlılık için İngilizce kaydet
         }, { merge: true });
 
     }, 5500);
