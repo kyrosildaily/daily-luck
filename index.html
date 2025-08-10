@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kyrosil Daily - A New Chance Every Day!</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎁</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -19,6 +18,7 @@
 
     <div class="main-container">
         <div class="info-column">
+            
             <div class="info-header">
                 <img src="https://kyrosil.wpcomstaging.com/wp-content/uploads/2025/04/adsiz-tasarim.png" alt="Kyrosil Logo" class="logo">
                 <div class="social-links">
@@ -29,14 +29,24 @@
                     <a href="https://linkedin.com/company/kyrosil" target="_blank" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4s1.39.63 1.39 1.4v4.93h2.8zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68zm-1.39 1.3h2.79v8.37H5.5v-8.37z"></path></svg></a>
                 </div>
             </div>
+
             <h2 class="main-headline" data-key="mainHeadline"></h2>
             
             <div class="section">
                 <h3 data-key="howItWorksTitle"></h3>
                 <div class="how-it-works">
-                    <div class="step"><span class="step-number">1</span><p><strong data-key="step1Title"></strong><br><span data-key="step1Desc"></span></p></div>
-                    <div class="step"><span class="step-number">2</span><p><strong data-key="step2Title"></strong><br><span data-key="step2Desc"></span></p></div>
-                    <div class="step"><span class="step-number">3</span><p><strong data-key="step3Title"></strong><br><span data-key="step3Desc"></span></p></div>
+                    <div class="step">
+                        <span class="step-number">1</span>
+                        <p><strong data-key="step1Title"></strong><br><span data-key="step1Desc"></span></p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <p><strong data-key="step2Title"></strong><br><span data-key="step2Desc"></span></p>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <p><strong data-key="step3Title"></strong><br><span data-key="step3Desc"></span></p>
+                    </div>
                 </div>
             </div>
 
@@ -44,6 +54,7 @@
                 <h3 data-key="rewardsTitle"></h3>
                 <h4 data-key="grandRewardsTitle"></h4>
                 <ul class="rewards-list" data-key="grandRewardsList"></ul>
+
                 <h4 data-key="otherRewardsTitle"></h4>
                 <ul class="rewards-list" data-key="otherRewardsList"></ul>
                 <p class="rewards-note" data-key="rewardsNote"></p>
@@ -59,18 +70,23 @@
                     <button id="login-button" data-key="loginButton"></button>
                     <p class="toggle-link"><span data-key="noAccount"></span> <a href="#" id="show-signup" data-key="signUpLink"></a></p>
                 </div>
+
                 <div class="form-container hidden" id="signup-form">
                     <h2 data-key="signUpTitle"></h2>
                     <input type="text" id="signup-name" data-placeholder-key="namePlaceholder" required>
                     <input type="text" id="signup-surname" data-placeholder-key="surnamePlaceholder" required>
+                    
                     <label for="signup-platform" data-key="platformLabel"></label>
                     <select id="signup-platform" required></select>
+                    
                     <input type="text" id="signup-platform-username" data-placeholder-key="platformUsernamePlaceholder" required>
+
                     <input type="email" id="signup-email" data-placeholder-key="emailPlaceholder" required>
                     <input type="password" id="signup-password" data-placeholder-key="passwordMinChar" required>
                     <button id="signup-button" data-key="signUpButton"></button>
                     <p class="toggle-link"><span data-key="alreadyAccount"></span> <a href="#" id="show-login" data-key="loginLink"></a></p>
                 </div>
+
                 <div id="social-login">
                     <p data-key="orText"></p>
                     <button id="google-login-button">
@@ -83,47 +99,26 @@
     </div>
 
     <div id="app-container" class="hidden">
+        <div id="verification-message" class="hidden">
+            <p><strong data-key="verifTitle"></strong> <span data-key="verifDesc1"></span><strong><span id="verif-email"></span></strong><span data-key="verifDesc2"></span></p>
+        </div>
         <div id="main-app" class="hidden">
-            <div class="dashboard-header">
-                <h1 class="welcome-text"><span data-key="welcomeMessage"></span>, <span id="user-display-name"></span>!</h1>
-                <button id="logout-button" data-key="logoutButton"></button>
-            </div>
-            <div class="dashboard-grid">
-                <div class="grid-item stats-spins"><h3 data-key="spinsRemaining"></h3><p id="spin-count">1</p></div>
-                <div class="grid-item stats-timer"><h3 data-key="nextSpinIn"></h3><p id="countdown-timer">--:--:--</p></div>
-                <div class="grid-item spinner-area">
-                    <div id="reward-section">
-                        <div class="spinner-container"><div class="spinner-marker"></div><div class="spinner-reel"></div></div>
-                        <button id="claim-button" data-key="tryChanceButton"></button>
-                        <div id="message-area"></div>
-                    </div>
+            <h1><span data-key="welcomeMessage"></span>, <span id="user-display-name"></span>!</h1>
+            <p id="user-email"></p>
+            
+            <div id="reward-section">
+                <div class="spinner-container">
+                    <div class="spinner-marker"></div>
+                    <div class="spinner-reel"></div>
                 </div>
-                <div class="grid-item extra-spins">
-                    <h3 data-key="extraSpinsTitle"></h3><p data-key="extraSpinsDesc"></p>
-                    <ul class="task-list">
-                        <li><span class="task-icon">📷</span> <span data-key="taskFollowInstagram"></span></li>
-                        <li><span class="task-icon">✖️</span> <span data-key="taskFollowX"></span></li>
-                        <li><span class="task-icon">🌐</span> <span data-key="taskVisitWebsite"></span></li>
-                    </ul>
-                </div>
-                <div class="grid-item winnings-history"><h3 data-key="winningsHistoryTitle"></h3><ul id="winnings-list"></ul></div>
+                <button id="claim-button" data-key="tryChanceButton"></button>
+                <div id="message-area"></div>
             </div>
-        </div>
-        <div id="verification-message" class="hidden"></div>
-    </div>
-    
-    <div id="onboarding-modal" class="hidden">
-        <div class="modal-content">
-            <h2 data-key="completeProfileTitle"></h2><p data-key="completeProfileDesc"></p>
-            <input type="text" id="onboarding-name" data-placeholder-key="namePlaceholder" required>
-            <input type="text" id="onboarding-surname" data-placeholder-key="surnamePlaceholder" required>
-            <label for="onboarding-platform" data-key="platformLabel"></label>
-            <select id="onboarding-platform" required></select>
-            <input type="text" id="onboarding-platform-username" data-placeholder-key="platformUsernamePlaceholder" required>
-            <button id="onboarding-submit" data-key="saveProfileButton"></button>
+            
+            <button id="logout-button" data-key="logoutButton"></button>
         </div>
     </div>
-    
+
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
