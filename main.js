@@ -134,33 +134,36 @@ document.addEventListener('DOMContentLoaded', () => {
         ui.verificationMessage.innerHTML = `<p>${translations[currentLang].verifTitle} ${translations[currentLang].verifDesc1}<strong>${user.email}</strong>${translations[currentLang].verifDesc2}</p>`;
     };
     
-    auth.onAuthStateChanged(async (user) => {
-        if (user) {
-            const userRef = db.collection('users').doc(user.uid);
-            let doc = await userRef.get();
-            if (!doc.exists) { console.error("User document not found!"); return; }
-            
-            let userData = doc.data();
-            const now = new Date();
-            const lastLogin = userData.lastLogin ? userData.lastLogin.toDate() : new Date(0);
-            
-            if (now.setHours(0,0,0,0) > lastLogin.setHours(0,0,0,0)) {
-                await userRef.update({ dailySpins: 1, lastLogin: now });
-                userData = (await userRef.get()).data();
-            }
-            
-            if (!user.emailVerified) {
-                renderVerification(user);
-            } else if (userData.profileComplete === false) {
-                renderOnboarding(userData);
-            } else {
-                renderDashboard(user, userData);
-            }
-        } else {
-            showView('login');
-        }
-        setLanguage(currentLang);
-    });
+    auth.onAuthStateChanged(async (user) => {
+        if (user) {
+            const userRef = db.collection('users').doc(user.uid);
+            let doc = await userRef.get();
+            if (!doc.exists) {
+                console.error("User document not found!");
+                return;
+            }
+
+            let userData = doc.data();
+            const now = new Date();
+            const lastLogin = userData.lastLogin ? userData.lastLogin.toDate() : new Date(0);
+
+            if (now.setHours(0, 0, 0, 0) > lastLogin.setHours(0, 0, 0, 0)) {
+                await userRef.update({ dailySpins: 1, lastLogin: now });
+                userData = (await userRef.get()).data();
+            }
+
+            if (!user.emailVerified) {
+                renderVerification(user);
+            } else if (userData.profileComplete === false) {
+                renderOnboarding(userData);
+            } else {
+                renderDashboard(user, userData);
+            }
+        } else {
+            showView('login');
+        }
+        setLanguage(currentLang);
+    });
 
     ui.langEnButton.addEventListener('click', () => setLanguage('en'));
     ui.langTrButton.addEventListener('click', () => setLanguage('tr'));
@@ -248,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     ui.googleLoginButton.addEventListener('click', () => {
-        const provider = new firebase.auth.GoogleAuthProvider();
+    _BOS_ const provider = new firebase.auth.GoogleAuthProvider();
         auth.signInWithPopup(provider)
             .then(async (result) => {
                 const user = result.user, userRef = db.collection('users').doc(user.uid);
