@@ -285,7 +285,14 @@ logoutButton.addEventListener('click', () => {
     auth.signOut().then(() => window.location.reload());
 });
 
-// Ödül Alma Butonu (YENİDEN YAZILMIŞ VE KESİN ÇÖZÜM)
+// YARDIMCI FONKSİYON: Belirtilen ID hariç rastgele bir ödül getirir.
+const getRandomReward = (excludeId) => {
+    const filteredRewards = rewards.filter(r => r.id !== excludeId);
+    return filteredRewards[Math.floor(Math.random() * filteredRewards.length)];
+};
+
+
+// Ödül Alma Butonu (SON GÜNCELLEME: KOMŞU KONTROLÜ)
 claimButton.addEventListener('click', async () => {
     const user = auth.currentUser;
     if (!user || !user.emailVerified) return;
@@ -311,7 +318,6 @@ claimButton.addEventListener('click', async () => {
         }
     }
 
-    // 1. KESİN KAZANANI SEÇ
     const weightedPool = [];
     rewards.forEach(reward => {
         const weight = reward.chance * 10;
@@ -321,25 +327,29 @@ claimButton.addEventListener('click', async () => {
     });
     const winner = weightedPool[Math.floor(Math.random() * weightedPool.length)];
 
-    // 2. GÖRSEL ANİMASYON İÇİN MAKARA HAZIRLA
     const reel = document.querySelector('.spinner-reel');
-    reel.style.transition = 'none'; // Anlık değişim için animasyonu kapat
-    reel.style.transform = 'translateX(0)'; // Pozisyonu sıfırla
-    reel.innerHTML = ''; // Eski makarayı temizle
+    reel.style.transition = 'none';
+    reel.style.transform = 'translateX(0)';
+    reel.innerHTML = '';
 
     let reelItems = [];
-    const reelLength = 50; // Animasyonda görünecek toplam öğe sayısı
+    const reelLength = 50;
+    const winningIndex = reelLength - 5; 
     
-    // Makarayı rastgele doldur
     for(let i = 0; i < reelLength; i++) {
         reelItems.push(rewards[Math.floor(Math.random() * rewards.length)]);
     }
 
-    // KESİN KAZANANI, makaranın sonlarına doğru belirli bir pozisyona yerleştir.
-    const winningIndex = reelLength - 5; // Kazananın duracağı pozisyon (örneğin 45. öğe)
     reelItems[winningIndex] = winner;
 
-    // Makarayı HTML'e dök
+    // YENİ EKLENEN KONTROL: Kazananın komşuları aynıysa değiştir.
+    if (winningIndex > 0 && reelItems[winningIndex - 1].id === winner.id) {
+        reelItems[winningIndex - 1] = getRandomReward(winner.id);
+    }
+    if (winningIndex < reelLength - 1 && reelItems[winningIndex + 1].id === winner.id) {
+        reelItems[winningIndex + 1] = getRandomReward(winner.id);
+    }
+    
     reelItems.forEach(item => {
         const div = document.createElement('div');
         const itemName = item[`name_${currentLang}`];
@@ -348,26 +358,19 @@ claimButton.addEventListener('click', async () => {
         reel.appendChild(div);
     });
 
-    // 3. ANİMASYONU BAŞLAT (Tarayıcının anlık değişimi fark etmesi için küçük bir gecikme)
     setTimeout(() => {
-        reel.style.transition = 'transform 5s cubic-bezier(0.25, 0.1, 0.25, 1)'; // Daha standart bir yavaşlama
-        
-        const itemWidth = 120; // CSS'teki width + margin (110 + 5 + 5)
+        reel.style.transition = 'transform 5s cubic-bezier(0.25, 0.1, 0.25, 1)';
+        const itemWidth = 120;
         const containerWidth = reel.parentElement.offsetWidth;
-        
-        // Kazanan öğenin tam olarak ortalanması için gereken pozisyonu hesapla
-        const targetPosition = winningIndex * itemWidth; // Kazanan öğenin başlangıç noktası
-        const centeringOffset = (containerWidth / 2) - (itemWidth / 2); // Konteynerin ortası - öğenin yarısı
-        
+        const targetPosition = winningIndex * itemWidth;
+        const centeringOffset = (containerWidth / 2) - (itemWidth / 2);
         const finalPosition = -(targetPosition - centeringOffset);
 
         reel.style.transform = `translateX(${finalPosition}px)`;
     }, 100);
 
-    // 4. SONUCU GÖSTER VE KAYDET
     setTimeout(async () => {
         const winnerName = winner[`name_${currentLang}`];
-        
         if(winner.id === 'try-again') {
             messageArea.textContent = winnerName;
             messageArea.style.backgroundColor = '#ffc107';
@@ -381,8 +384,8 @@ claimButton.addEventListener('click', async () => {
         
         await userRef.set({
             lastClaim: now,
-            lastReward: winner.name_en // Veritabanına tutarlılık için İngilizce kaydet
+            lastReward: winner.name_en
         }, { merge: true });
 
-    }, 5500); // Animasyonun bitmesini bekle
+    }, 5500);
 });
