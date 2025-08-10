@@ -248,16 +248,14 @@ document.addEventListener('DOMContentLoaded', () => {
         auth.signInWithPopup(provider)
             .then(async (result) => {
                 const user = result.user, userRef = db.collection('users').doc(user.uid);
-                const doc = await userRef.get();
-                if (!doc.exists) {
+                const isNewUser = result.additionalUserInfo.isNewUser;
+                if (isNewUser) {
                     const newUserData = {
                         name: user.displayName.split(' ')[0], surname: user.displayName.split(' ').slice(1).join(' '), email: user.email, createdAt: firebase.firestore.FieldValue.serverTimestamp(), profileComplete: false, dailySpins: 1, lastLogin: new Date(), socialProfiles: {}
                     };
                     await userRef.set(newUserData);
                     renderOnboarding(newUserData);
                     setLanguage(currentLang);
-                } else {
-                    // Existing user, onAuthStateChanged will handle rendering
                 }
             })
             .catch(error => console.error("Google sign-in error", error));
