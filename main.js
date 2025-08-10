@@ -96,14 +96,19 @@ auth.onAuthStateChanged(user => {
 
 // Üye Olma Butonu
 signupButton.addEventListener('click', () => {
+    // Mevcut alanları oku
     const name = document.getElementById('signup-name').value;
     const surname = document.getElementById('signup-surname').value;
-    const username = document.getElementById('signup-username').value;
     const email = document.getElementById('signup-email').value;
     const password = document.getElementById('signup-password').value;
 
-    if (!name || !email || !password) {
-        alert("Lütfen tüm zorunlu alanları doldurun.");
+    // Yeni eklediğimiz alanları oku
+    const platform = document.getElementById('signup-platform').value;
+    const platformUsername = document.getElementById('signup-platform-username').value;
+
+    // Alanların boş olup olmadığını kontrol et
+    if (!name || !email || !password || !platform || !platformUsername) {
+        alert("Lütfen tüm alanları doldurun.");
         return;
     }
 
@@ -114,12 +119,13 @@ signupButton.addEventListener('click', () => {
             // 1. E-posta onayı gönder
             user.sendEmailVerification();
 
-            // 2. Kullanıcı bilgilerini Firestore'a kaydet
+            // 2. Kullanıcı bilgilerini YENİ YAPIYLA Firestore'a kaydet
             return db.collection('users').doc(user.uid).set({
                 name: name,
                 surname: surname,
-                username: username,
                 email: email,
+                followedPlatform: platform, // Yeni alan
+                platformUsername: platformUsername, // Yeni alan
                 createdAt: firebase.firestore.FieldValue.serverTimestamp()
             });
         })
