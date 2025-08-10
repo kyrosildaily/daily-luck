@@ -16,7 +16,7 @@ const auth = firebase.auth();
 const db = firebase.firestore();
 
 // --- HTML ELEMANLARINI SEÇME ---
-const authContainer = document.getElementById('auth-container');
+const mainContainer = document.querySelector('.main-container');
 const appContainer = document.getElementById('app-container');
 const verificationMessage = document.getElementById('verification-message');
 const mainApp = document.getElementById('main-app');
@@ -39,8 +39,23 @@ const userDisplayName = document.getElementById('user-display-name');
 const userEmailDisplay = document.getElementById('user-email');
 const verifEmail = document.getElementById('verif-email');
 
-// Ödül listesi
-const rewards = ["%20 İndirim Kazandın!", "1 Ay Ücretsiz Üyelik!", "Sürpriz Kutu!", "Maalesef, bu sefer olmadı."];
+
+// YENİ ÖDÜL YAPISI (YÜZDELER VE GÖRSELLERLE)
+// Not: İkonlar https://icons8.com/ adresinden alınmıştır. Daha sonra değiştirilebilir.
+const rewards = [
+    { id: 'try-again', name: 'Yarın Tekrar Dene', chance: 80, rarity: 'common', imageUrl: 'https://img.icons8.com/ios/100/recurring-appointment.png' },
+    { id: 'bk-sb', name: 'Burger King & Starbucks Çekleri', chance: 5, rarity: 'uncommon', imageUrl: 'https://img.icons8.com/ios/100/coffee-to-go.png' },
+    { id: 'thy-bilet', name: 'THY Tek Yön Bilet', chance: 2.5, rarity: 'rare', imageUrl: 'https://img.icons8.com/ios/100/airport.png' },
+    { id: 'usdt-50', name: '50 USDT Nakit', chance: 2.5, rarity: 'rare', imageUrl: 'https://img.icons8.com/ios/100/us-dollar-circled.png' },
+    { id: 'carrefour', name: 'CarrefourSA Hediye Çeki', chance: 2.5, rarity: 'uncommon', imageUrl: 'https://img.icons8.com/ios/100/shopping-cart.png' },
+    { id: 'adidas', name: 'Adidas Hediye Çeki', chance: 2.5, rarity: 'uncommon', imageUrl: 'https://img.icons8.com/ios/100/trainers.png' },
+    { id: 'trendyol', name: 'Trendyol Hediye Çeki', chance: 2.5, rarity: 'uncommon', imageUrl: 'https://img.icons8.com/ios/100/online-store.png' },
+    { id: 'atina', name: 'Atina\'da Tarih Gezisi', chance: 0.8, rarity: 'legendary', imageUrl: 'https://img.icons8.com/ios/100/parthenon.png' },
+    { id: 'santorini', name: 'Santorini Tatili', chance: 0.7, rarity: 'legendary', imageUrl: 'https://img.icons8.com/ios/100/beach.png' },
+    { id: 'thy-1000', name: 'THY 1000$ Hediye Çeki', chance: 0.5, rarity: 'legendary', imageUrl: 'https://img.icons8.com/ios/100/gift-card.png' },
+    { id: 'nakit-5000', name: '5.000 EURO Nakit', chance: 0.5, rarity: 'legendary', imageUrl: 'https://img.icons8.com/ios/100/money-bag.png' }
+];
+
 
 // --- FORM GEÇİŞLERİ ---
 showSignup.addEventListener('click', (e) => {
@@ -60,20 +75,17 @@ showLogin.addEventListener('click', (e) => {
 // Kullanıcı giriş/çıkış durumunu dinle
 auth.onAuthStateChanged(user => {
     if (user) {
-        // Kullanıcı giriş yaptı
-        authContainer.classList.add('hidden');
+        mainContainer.classList.add('hidden');
         appContainer.classList.remove('hidden');
         
         if (user.emailVerified) {
-            // E-postası ONAYLANMIŞSA ana uygulamayı göster
             verificationMessage.classList.add('hidden');
             mainApp.classList.remove('hidden');
             
-            // Kullanıcı bilgilerini Firestore'dan çek ve göster
             const userRef = db.collection('users').doc(user.uid);
             userRef.get().then(doc => {
                 if (doc.exists) {
-                    userDisplayName.textContent = doc.data().name || user.email; // Veritabanında adı varsa onu, yoksa e-postasını göster
+                    userDisplayName.textContent = doc.data().name || user.email;
                 } else {
                     userDisplayName.textContent = user.email;
                 }
@@ -81,32 +93,26 @@ auth.onAuthStateChanged(user => {
             userEmailDisplay.textContent = `E-posta: ${user.email}`;
 
         } else {
-            // E-postası ONAYLANMAMIŞSA onay mesajını göster
             verificationMessage.classList.remove('hidden');
             mainApp.classList.add('hidden');
             verifEmail.textContent = user.email;
         }
 
     } else {
-        // Kullanıcı çıkış yaptı
-        authContainer.classList.remove('hidden');
+        mainContainer.classList.remove('hidden');
         appContainer.classList.add('hidden');
     }
 });
 
 // Üye Olma Butonu
 signupButton.addEventListener('click', () => {
-    // Mevcut alanları oku
     const name = document.getElementById('signup-name').value;
     const surname = document.getElementById('signup-surname').value;
     const email = document.getElementById('signup-email').value;
     const password = document.getElementById('signup-password').value;
-
-    // Yeni eklediğimiz alanları oku
     const platform = document.getElementById('signup-platform').value;
     const platformUsername = document.getElementById('signup-platform-username').value;
 
-    // Alanların boş olup olmadığını kontrol et
     if (!name || !email || !password || !platform || !platformUsername) {
         alert("Lütfen tüm alanları doldurun.");
         return;
@@ -115,17 +121,13 @@ signupButton.addEventListener('click', () => {
     auth.createUserWithEmailAndPassword(email, password)
         .then(userCredential => {
             const user = userCredential.user;
-            
-            // 1. E-posta onayı gönder
             user.sendEmailVerification();
-
-            // 2. Kullanıcı bilgilerini YENİ YAPIYLA Firestore'a kaydet
             return db.collection('users').doc(user.uid).set({
                 name: name,
                 surname: surname,
                 email: email,
-                followedPlatform: platform, // Yeni alan
-                platformUsername: platformUsername, // Yeni alan
+                followedPlatform: platform,
+                platformUsername: platformUsername,
                 createdAt: firebase.firestore.FieldValue.serverTimestamp()
             });
         })
@@ -154,14 +156,11 @@ googleLoginButton.addEventListener('click', () => {
         .then(result => {
             const user = result.user;
             const userRef = db.collection('users').doc(user.uid);
-
-            // Veritabanında bu kullanıcı var mı diye kontrol et
             return userRef.get().then(doc => {
                 if (!doc.exists) {
-                    // Eğer yoksa (yani ilk kez Google ile giriyorsa), bilgilerini kaydet
                     userRef.set({
-                        name: user.displayName.split(' ')[0], // Google isminin ilk kelimesi
-                        surname: user.displayName.split(' ').slice(1).join(' '), // Google isminin geri kalanı
+                        name: user.displayName.split(' ')[0],
+                        surname: user.displayName.split(' ').slice(1).join(' '),
                         email: user.email,
                         createdAt: firebase.firestore.FieldValue.serverTimestamp()
                     });
@@ -176,36 +175,93 @@ googleLoginButton.addEventListener('click', () => {
 
 // Çıkış Yapma Butonu
 logoutButton.addEventListener('click', () => {
-    auth.signOut();
+    auth.signOut().then(() => {
+        window.location.reload(); // Sayfayı yenileyerek ana sayfaya dön
+    });
 });
 
-// Ödül Alma Butonu
+// Ödül Alma Butonu (YENİ ANİMASYONLU VE AĞIRLIKLI MANTIK)
 claimButton.addEventListener('click', async () => {
     const user = auth.currentUser;
-    if (!user || !user.emailVerified) return; // Kullanıcı yoksa veya e-postası onaylı değilse işlem yapma
+    if (!user || !user.emailVerified) return;
+
+    claimButton.disabled = true;
+    claimButton.textContent = 'Çark Dönüyor...';
+    messageArea.textContent = '';
+    messageArea.style.backgroundColor = 'transparent';
 
     const userRef = db.collection('users').doc(user.uid);
     const doc = await userRef.get();
-
+    
     const now = new Date();
     const twentyFourHours = 24 * 60 * 60 * 1000;
-
     if (doc.exists && doc.data().lastClaim) {
         const lastClaimDate = doc.data().lastClaim.toDate();
         if (now.getTime() - lastClaimDate.getTime() < twentyFourHours) {
             messageArea.textContent = 'Bugünlük hakkını kullandın. Lütfen yarın tekrar dene!';
             messageArea.style.backgroundColor = '#ffc107';
+            claimButton.disabled = false;
+            claimButton.textContent = 'Şansımı Dene!';
             return;
         }
     }
 
-    const randomReward = rewards[Math.floor(Math.random() * rewards.length)];
+    const weightedPool = [];
+    rewards.forEach(reward => {
+        const weight = reward.chance * 10;
+        for (let i = 0; i < weight; i++) {
+            weightedPool.push(reward);
+        }
+    });
+    const winner = weightedPool[Math.floor(Math.random() * weightedPool.length)];
 
-    await userRef.set({
-        lastClaim: now,
-        lastReward: randomReward
-    }, { merge: true });
+    const reel = document.querySelector('.spinner-reel');
+    reel.style.transition = 'none';
+    reel.style.transform = 'translateX(0)';
+    reel.innerHTML = '';
 
-    messageArea.textContent = `Tebrikler! Ödülün: ${randomReward}`;
-    messageArea.style.backgroundColor = '#28a745';
+    const reelItems = [];
+    const reelLength = 50;
+    for(let i = 0; i < reelLength; i++) {
+        const itemData = (i === reelLength - 5) ? winner : rewards[Math.floor(Math.random() * rewards.length)];
+        reelItems.push(itemData);
+    }
+    
+    reelItems.forEach(item => {
+        const div = document.createElement('div');
+        div.className = `spinner-item rarity-${item.rarity}`;
+        div.innerHTML = `<img src="${item.imageUrl}" alt="${item.name}"><p>${item.name}</p>`;
+        reel.appendChild(div);
+    });
+
+    setTimeout(() => {
+        reel.style.transition = 'transform 5s cubic-bezier(0.2, 0.8, 0.25, 1)';
+        const itemWidth = 120;
+        const targetPosition = (reelLength - 5) * itemWidth;
+        const containerWidth = reel.parentElement.offsetWidth;
+        const offset = (containerWidth / 2) - (itemWidth / 2);
+        const randomJitter = Math.floor(Math.random() * (itemWidth - 20)) - ((itemWidth - 20) / 2);
+        
+        const finalPosition = -targetPosition + offset + randomJitter;
+        reel.style.transform = `translateX(${finalPosition}px)`;
+    }, 100);
+
+    setTimeout(async () => {
+        if(winner.id === 'try-again') {
+            messageArea.textContent = `${winner.name}`;
+            messageArea.style.backgroundColor = '#ffc107';
+        } else {
+            messageArea.textContent = `Tebrikler! Ödülün: ${winner.name}`;
+            messageArea.style.backgroundColor = winner.rarity === 'legendary' ? '#ffb703' : '#28a745';
+        }
+        
+        claimButton.disabled = true;
+        claimButton.textContent = 'Yarın Tekrar Görüşürüz!';
+        
+        await userRef.set({
+            lastClaim: now,
+            lastReward: winner.name
+        }, { merge: true });
+
+    }, 5500);
 });
