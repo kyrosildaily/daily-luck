@@ -1,28 +1,8 @@
 :root {
-    --primary-color: #005A9C;
-    --secondary-color: #1877f2;
-    --dark-text: #333;
-    --light-text: #666;
-    --background-color: #f4f7f6;
-    --container-background: #ffffff;
-    --border-color: #e0e0e0;
-    --legendary-color: #ffb703;
-    --rare-color: #0077b6;
-    --uncommon-color: #495057;
-    --common-color: #adb5bd;
+    --primary-color: #005A9C; --secondary-color: #1877f2; --dark-text: #333; --light-text: #666; --background-color: #f4f7f6; --container-background: #ffffff; --border-color: #e0e0e0; --legendary-color: #ffb703; --rare-color: #0077b6; --uncommon-color: #495057; --common-color: #adb5bd;
 }
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--background-color);
-    margin: 0;
-    color: var(--dark-text);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-    position: relative;
+    font-family: 'Poppins', sans-serif; background-color: var(--background-color); margin: 0; color: var(--dark-text); display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; box-sizing: border-box; position: relative;
 }
 .language-switcher {
     position: absolute; top: 20px; right: 20px; z-index: 1000; background: var(--container-background); border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex;
@@ -41,22 +21,13 @@ body {
 .auth-column { flex-basis: 45%; background-color: #f9f9f9; padding: 40px; display: flex; align-items: center; justify-content: center; box-sizing: border-box; }
 
 .info-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;
 }
 .logo {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--container-background);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 3px solid var(--container-background); box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 .social-links a {
-    margin: 0 0 0 12px;
-    display: inline-block;
+    margin: 0 0 0 12px; display: inline-block;
 }
 .social-links svg {
     width: 24px; height: 24px; fill: var(--light-text); transition: fill 0.2s;
@@ -81,7 +52,7 @@ h2 { color: #1c1e21; margin-top: 0; text-align: center; }
 input, select { width: 100%; padding: 12px; margin-bottom: 12px; border: 1px solid var(--border-color); border-radius: 6px; box-sizing: border-box; }
 button { width: 100%; padding: 12px; border: none; border-radius: 6px; background-color: var(--secondary-color); color: white; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: background-color 0.2s; }
 button:hover { background-color: #166fe5; }
-#google-login-button { background-color: #ffffff; color: #444; border: 1px solid #ddd; display: flex; justify-content: center; align-items: center; gap: 10px; width: auto; padding: 10px 20px; }
+#google-login-button { background-color: #ffffff; color: #444; border: 1px solid #ddd; display: flex; justify-content: center; align-items: center; gap: 10px; width: auto; padding: 10px 20px; margin-left: auto; margin-right: auto; }
 .toggle-link { margin-top: 15px; font-size: 14px; text-align: center; }
 .toggle-link a { color: var(--secondary-color); text-decoration: none; font-weight: bold; }
 label { display: block; text-align: left; font-weight: bold; margin-bottom: 5px; font-size: 14px; }
@@ -95,7 +66,7 @@ label { display: block; text-align: left; font-weight: bold; margin-bottom: 5px;
 #verification-message { text-align: center; max-width: 500px; }
 
 #main-app { max-width: 900px; }
-.dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+.dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 15px;}
 .welcome-text { margin: 0; font-size: 24px; }
 #logout-button { width: auto; padding: 8px 16px; font-size: 14px; margin-top: 0; background-color: #fa3e3e; }
 .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr auto; gap: 20px; grid-template-areas: "spins timer" "spinner spinner" "extra-spins winnings"; }
